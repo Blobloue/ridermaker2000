@@ -590,6 +590,30 @@ body.tabsdd #verName{width:130px}
 .pgm{font-size:12px;color:var(--muted);white-space:nowrap}
 .pgroup.closed{padding-bottom:10px}
 .pgroup.closed:hover{border-color:#4a5b6a}
+
+/* v1.55 */
+#dlgH{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:95;padding:14px;background:rgba(5,8,10,.55);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+#dlgH.on{display:flex}
+#dlgH .hbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;width:min(760px,100%);max-height:90vh;display:flex;flex-direction:column;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#dlgH .hhead{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+#dlgH .hhead b{font-size:16px}
+#dlgH .hhead .btn{margin-left:auto}
+#dlgH .hbody{overflow:auto;padding:6px 20px 20px;line-height:1.55;font-size:15px}
+#dlgH h1{display:none}
+#dlgH h2{font-size:18px;color:var(--accent);margin:22px 0 8px}
+#dlgH h3{font-size:15px;margin:18px 0 6px;text-transform:uppercase;letter-spacing:.04em;color:#c9d2da}
+#dlgH p{margin:6px 0}
+#dlgH ul{margin:4px 0;padding-left:20px}
+#dlgH li{margin:3px 0}
+#dlgH code{background:#0f151a;padding:1px 5px;border-radius:4px;font-size:13px}
+.brand small{opacity:.8}
+body.tabsdd .brand{display:inline-flex!important;font-size:0}
+body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
+@media (max-width:700px){
+  #top{grid-template-columns:auto auto auto minmax(0,1fr) minmax(0,1fr) auto auto;grid-template-areas:"m h x b v u r" "t t t t t a p"}
+  #top .brand{display:inline-flex!important;grid-area:x;font-size:0}
+  #top .brand small{font-size:11px;margin:0;display:inline!important}
+}
 </style>
 </head>
 <body>
@@ -598,7 +622,7 @@ body.tabsdd #verName{width:130px}
 <header id="top">
   <button id="menuL" class="btn ico only-small" aria-label="Menü">☰</button>
   <button id="homeBtn" class="btn ico" title="Projektek" aria-label="Projektek"><svg viewBox="0 0 16 16" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.8 6.3V13.5h3V10h2.4v3.5h3V6.3"/></svg></button>
-  <b class="brand">RiderMaker2000 <small>v1.54</small></b>
+  <b class="brand">RiderMaker2000 <small id="verLbl">v1.55</small></b>
   <input id="bandName" type="text" placeholder="Zenekar neve">
   <span id="verBox"><input id="verName" type="text" placeholder="Verzió neve" title="Verzió neve"><select id="verSel" title="Verziók"></select></span>
   <select id="tabSel" title="Nézet"><option value="stage">Stageplot</option><option value="ch">Csatornalista</option><option value="req">Kérések</option><option value="con">Kontaktok</option></select>
@@ -618,6 +642,69 @@ body.tabsdd #verName{width:130px}
 <div id="scrim"></div>
 <div id="toast"></div>
 <div id="dlg"><div class="dbox"><b id="dlgT">Új projekt</b><input type="text" id="dlgI" placeholder="Zenekar / projekt neve"><div class="line"><button class="btn pri" id="dlgOk">Létrehozás</button><button class="btn" id="dlgNo">Mégse</button></div></div></div>
+<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.55</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
+<p>Technikai rider egy helyen: stageplot, csatornalista, kérések és kontaktok, a végén egy tiszta, kinyomtatható PDF.</p>
+<h2>1. Hol vannak az adataid?</h2>
+<p><b>Minden automatikusan mentődik, a böngészőbe, ezen az eszközön.</b> Nincs fiók, nincs szerver, a ridereidet senki más nem látja, a GitHubra csak maga a program kerül fel.</p>
+<p>Ebből három dolog következik:</p>
+<ul>
+<li><b>Csinálj néha biztonsági mentést.</b> A böngésző tárolója törlődhet (böngészési adatok törlése, iPaden a Safari magától is takarít). ☰ menü → <b>Mentés fájlba…</b> Itt kiválasztod, mi kerüljön bele: ez a verzió, a projekt minden verziója, minden projekt, és/vagy a presetek.</li>
+<li><b>Eszközök között fájllal viszed át.</b> Mentés fájlba → AirDrop, iCloud Drive vagy e-mail → a másik eszközön <b>Megnyitás fájlból…</b> → kipipálod, mit töltsön be. A betöltött projektek újként jönnek létre, a presetek hozzáadódnak a meglévőkhöz. Automatikus szinkron nincs.</li>
+<li><b>A kezdőképernyőre tett app külön tároló.</b> iPaden a kezdőképernyős app nem látja, amit a Safariban csináltál (és fordítva), ezért az adatokat abba töltsd be, amit használni fogsz.</li>
+</ul>
+<p>Egyszer megnyitva a program <b>net nélkül is működik</b>, netre kapcsolva pedig magától a legfrissebb verzió indul.</p>
+<h2>2. Telepítés és frissítés</h2>
+<ul>
+<li><b>Első feltöltés:</b> GitHubon új, publikus repo → feltöltöd a fájlokat (index.html, sw.js, manifest.webmanifest, ikonok, README.md) → Settings → Pages → Deploy from a branch → main, / (root).</li>
+<li><b>Frissítés:</b> csak az új <code>index.html</code>-t töltöd fel (Add file → Upload files). Az adataid megmaradnak.</li>
+<li><b>iPadre/telefonra:</b> Safariban megnyitod a címet → Megosztás → Főképernyőhöz adás.</li>
+</ul>
+<h2>3. Felépítés</h2>
+<p><b>Projekt = zenekar, verzió = egy rider</b> (pl. „klubos”, „akusztik”, „fesztivál”). A ⌂ gomb a Projektek oldal: a projektekre kattintva nyílnak le a verziók. Új verzió (másolat) a verziószámot lépteti (v1 → v2), az Új üres verzió tiszta lappal indul. A felső sávban átírod a projekt és a verzió nevét, a ▾ vált a verziók között. Keskenyebb ablakban a fülek lenyíló menüvé válnak. ↶ ↷ visszavonás.</p>
+<h3>Stageplot</h3>
+<ul>
+<li><b>Blokk = egy zenész vagy egy eszköz</b> a színpadon, valós helyén. A <b>+</b> gombbal presetből jön (Dob, Basszus, Billentyű, Gitár, Ének, DJ, Keverő), a saját blokkjaidat „Mentés presetként” elmented.</li>
+<li><b>Egy blokk sorai:</b><ul>
+<li><b>Input:</b> forrás, típus (mikrofon / DI / egyéb), eszköz típusa (gépelésre javasol, a listát bővítheted és törölheted), helyi vagy saját, RF. Mikrofonnál állvány: a típus alapján magától beáll (ének, OH → nagy; lábdob, láda, tom → kicsi; csiptetős → nincs), kézzel felülírhatod. DI-nél aktív/passzív.</li>
+<li><b>Output:</b> wedge, IEM, sidefill vagy main, és a cél.</li>
+<li><b>Áram:</b> „230V áram a jelölt helyekre”, kérésre darabszámmal.</li>
+<li><b>Megjegyzés.</b></li>
+</ul></li>
+<li><b>Tömörítés:</b> sok sorból egy rövid összefoglaló (pl. dob). A <b>Kiemelt</b> sor tömörítve is külön látszik.</li>
+<li><b>Szövegméret</b> beírható, több kijelölt blokknál együtt állítod.</li>
+<li><b>Eszköztár:</b> rendezői/színpadi nézet, mozgatás, snap, méretek, zoom, színpadméret. Shift + klikk: több kijelölés, Option + húzás: másolás, Cmd + húzás: snap nélkül, Delete: törlés, nyilak: finom mozgatás.</li>
+<li>Telefonon a blokk-szerkesztő alul összecsukható sáv.</li>
+</ul>
+<h3>Csatornalista</h3>
+<ul>
+<li><b>A sorok a stageplotból jönnek</b> (🔗 jelzi és a zöldes csoportcím). A sorszám a sorrendből jön.</li>
+<li><b>Húzással</b> (⠿) átrendezed a listát, a stageplot nem változik.</li>
+<li><b>Szám átírása:</b> onnan folytatódik a számozás, 📌 jelzi; a 📌-re koppintva újra automatikus. Ugyanez a blokk-szerkesztő „Manuális sorszám” mezője.</li>
+<li><b>Input és output sorrend</b> külön állítható a ☰ menüben, blokkonként húzva.</li>
+<li><b>Kézi csatornalista</b> (☰ menü): a lista leválik a stageplotról, szabadon írod és törlöd, semmi nem tolódik. Visszakapcsolva a meglévő sorok kézi sorok maradnak, csak az új stageplot elemek kapnak csatornát.</li>
+<li><b>Kézi sorok</b> (szürke csoport): csak a listán élnek, a stageploton nem. Blokk törlésekor a program megkérdezi, megtartsa-e a csatornáit kézi sorként.</li>
+<li>Oszlopok ki-be kapcsolhatók, a zöld mező = kitöltve.</li>
+</ul>
+<h3>Kérések</h3>
+<ul>
+<li><b>Amire szükségünk van:</b> a program kiszámolja a stageplotból (XLR, DI-box, kis és nagy állvány, mikrofonok, dobmikrofon szett dobtestekkel, rádiós mikrofon külön, áram, stagebox). Minden sor átírható, pipával kivehető a PDF-ből.</li>
+<li><b>Backline igény:</b> dob, gitárláda, basszusláda, billentyűállvány, saját tételekkel bővíthető.</li>
+<li><b>Kérések:</b> + Új kérés, presetből vagy saját szöveggel (router, kommunikáció, keverő stb.), pipa = bekerül a PDF-be.</li>
+<li><b>Egyéb megjegyzés:</b> szabad szöveg a végére.</li>
+</ul>
+<h3>Kontaktok</h3>
+<p>Név, szerep, telefon, e-mail. A ☆ Mentés gombbal kontakt presetet csinálsz, legközelebb egy koppintással hozzáadod. Itt látod a PDF címét, és itt állítod a dátumot (üresen az exportálás napja).</p>
+<h3>PDF</h3>
+<p><b>PDF</b> gomb → az ablak jelzi, ha valami fontos hiányzik (de nem akadályoz). Minden oldalon fejléc: dátum, „Projekt · Verzió – tech rider”, oldalszám. Sorrend: kontaktok, stageplot, csatornalista, amire szükségünk van, backline, kérések, megjegyzés. Van <b>fekete-fehér</b> opció (saját = folytonos vonal, helyi = szaggatott). A fájlnév a címből és a dátumból jön, a szöveg kimásolható.</p>
+<h2>4. A filozófia</h2>
+<ul>
+<li><b>A rider a helyi technikusnak szól.</b> Csak az kerül bele, ami neki feladat: amit kérünk, és ami a munkájához kell. A saját eszközeid a rajzon jelölve vannak, de a kért listában nem szerepelnek.</li>
+<li><b>Minden alapból helyi,</b> a saját eszközt te jelölöd meg.</li>
+<li><b>Ami üres, az nem látszik.</b> Nincs „—”, nincs „válassz”, nincs felesleges oszlop.</li>
+<li><b>A program számol, te döntesz.</b> Minden javaslat átírható vagy kivehető.</li>
+<li><b>Egy irányban egyszerű:</b> a stageplotból lesz a csatornalista. Ha kell, kézi módba váltasz.</li>
+<li><b>Technikai rider, nem szerződés:</b> nincs benne catering, fény, PA-követelmény. A telefonos egyeztetést nem váltja ki, hanem előkészíti.</li>
+</ul></div></div></div>
 <div id="pmenu"></div>
 <div id="dlgS"><div class="dbox"><b>Mentés fájlba</b>
   <div class="mx"><div class="mxh">Projektek</div>
@@ -650,6 +737,7 @@ body.tabsdd #verName{width:130px}
     <div class="phead only-small"><b>Menü</b><button class="btn sm" data-close>✕ Bezár</button></div>
 
     
+    <div class="stack"><button id="helpBtn" class="btn">📖 Leírás és mentés</button></div>
     <h3>Csatornák</h3>
     <div class="stack">
       <label class="mantog"><input type="checkbox" id="manTog"><span class="mt1">Kézi csatornalista</span><span class="mt2" id="manTxt"></span></label>
@@ -1790,7 +1878,7 @@ function renderProjects() {
   const groups = {};
   loadIdx().forEach(e => { (groups[gidOf(e)] = groups[gidOf(e)] || []).push(e); });
   const gl = Object.keys(groups).map(g => ({g, vs:groups[g].sort((a, b) => (a.created || 0) - (b.created || 0)), upd:Math.max.apply(null, groups[g].map(e => e.updated || 0))})).sort((a, b) => b.upd - a.upd);
-  let h = '<div class="chbar"><div class="line"><button class="btn pri" data-pa="new">+ Új projekt</button><button class="btn" data-pa="import">Megnyitás fájlból…</button><button class="btn" data-pa="saveall">Mentés fájlba…</button></div>' +
+  let h = '<div class="chbar"><div class="line"><button class="btn pri" data-pa="new">+ Új projekt</button><button class="btn" data-pa="import">Megnyitás fájlból…</button><button class="btn" data-pa="saveall">Mentés fájlba…</button><button class="btn" data-pa="help">📖 Leírás</button></div>' +
     '<p class="hint" style="margin:0">Egy projekt egy zenekar, benne több verzióval. Minden automatikusan mentődik ebben a böngészőben. Mentéskor és megnyitáskor kiválaszthatod, mi kerüljön bele (verzió, projekt, minden projekt, presetek). A kártyán lévő „Mentés fájlba” csak azt a verziót menti.</p></div>';
   h += gl.map(G => {
     const band = G.g === S.gid ? S.band : (G.vs[0].band || '');
@@ -2658,6 +2746,7 @@ function saveAll() {
   const projects = loadIdx().map(e => { const raw = e.id === PID ? JSON.stringify(S) : store.get(PK + e.id); return raw ? JSON.parse(raw) : null; }).filter(Boolean);
   download({rm2000_backup:1, projects, presets:userPresets(), reqPresets:reqPresets(), conPresets:conPresets(), lists:readJSON(LISTS_KEY, null)}, 'RiderMaker2000 – összes projekt ' + todayStr() + '.json');
 }
+function openHelp() { drawer('', false); $('#dlgH').classList.add('on'); $('#dlgH .hbody').scrollTop = 0; }
 function openSaveDlg() { $('#dlgS').classList.add('on'); }
 function doSaveDlg() {
   const sc = (document.querySelector('input[name=sScope]:checked') || {}).value || 'ver';
@@ -2844,6 +2933,9 @@ function bindUI() {
   $('#dlgCB').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (!b) return; const cb = chCb; chCb2 = null; closeChoice(); if (cb) cb(b.dataset.v); });
   $('#dlgOk').addEventListener('click', okDlg);
   $('#dlgSOk').addEventListener('click', doSaveDlg);
+  $('#helpBtn').addEventListener('click', openHelp);
+  $('#dlgHX').addEventListener('click', () => $('#dlgH').classList.remove('on'));
+  $('#dlgH').addEventListener('click', e => { if (e.target.id === 'dlgH') $('#dlgH').classList.remove('on'); });
   $('#dlgSNo').addEventListener('click', () => $('#dlgS').classList.remove('on'));
   $('#dlgS').addEventListener('click', e => { if (e.target.id === 'dlgS') $('#dlgS').classList.remove('on'); });
   $('#dlgLOk').addEventListener('click', doLoadDlg);
@@ -2877,6 +2969,7 @@ function bindUI() {
     if (a === 'new') projNew();
     else if (a === 'import') $('#file').click();
     else if (a === 'saveall') openSaveDlg();
+    else if (a === 'help') openHelp();
     else if (a === 'open') projOpen(id);
     else if (a === 'ver') newVersion(id);
     else if (a === 'vere') { const e = loadIdx().find(x => x.id === id); if (e) newEmptyVersion(gidOf(e), id === PID ? S.band : e.band, id === PID ? S.name : e.name); }
@@ -3142,6 +3235,7 @@ function bindUI() {
   renderAll();
 })();
 </script>
+
 <script>
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
