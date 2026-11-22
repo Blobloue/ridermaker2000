@@ -614,6 +614,90 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
   #top .brand{display:inline-flex!important;grid-area:x;font-size:0}
   #top .brand small{font-size:11px;margin:0;display:inline!important}
 }
+
+/* v1.56 */
+#insp .props .prop select[data-f=lock]{height:28px;font-size:13px;padding:0 6px}
+
+/* v1.6 – DI-Box: nincs kitöltés, csak saját/helyi szín, dupla keret */
+.tag.dbox{background:transparent!important;border:3px double currentColor;padding:0 4px;box-shadow:none!important;letter-spacing:.02em}
+.tag.dbox.own{color:var(--own)}
+.tag.dbox.venue{color:var(--venue)}
+.logof{grid-column:1/-1}
+.logop{max-height:40px;max-width:160px;background:#fff;border-radius:4px;padding:3px}
+/* PDF: nagyobb, kontrasztosabb, tagoltabb */
+#printRoot{font-size:14px;color:#000}
+#printRoot .rhead{font-size:13px;color:#222;border-bottom:1.5px solid #555;align-items:center}
+#printRoot .rhead b{font-size:18px;color:#000}
+#printRoot .rmid{display:flex;flex-direction:column;align-items:center;gap:2px}
+#printRoot .rlogo{max-height:13mm;max-width:90mm;object-fit:contain}
+#printRoot .rmid b{font-size:14px}
+#printRoot .sh{font-size:17px;padding:16px 0 7px;text-align:center}
+#printRoot th,#printRoot td{border-bottom:1px solid #b3bcc4;padding:4px 6px;font-size:13.5px}
+#printRoot th{font-size:11.5px;color:#222;border-bottom:1.5px solid #555;font-weight:700}
+#printRoot td.n{width:40px}
+#printRoot .nb{display:inline-block;min-width:24px;padding:0 4px;text-align:center;background:#eceff2;border:1px solid #9aa4ad;border-radius:3px;font-weight:700;line-height:1.35}
+#printRoot .nd1{padding:5px 4px;font-size:14.5px;border-bottom-color:#b3bcc4;align-items:center}
+#printRoot .nd1 b{flex:0 0 38px}
+#printRoot .rq2{font-size:14.5px;padding-bottom:16px}
+#printRoot .legend{font-size:12px;color:#222}
+#printRoot .pst .lbl{color:#555}
+#printRoot .pst .tag.in{background:#e9ecef}
+#printRoot:not(.bw) .pst .tag.out{background:#dbeff3}
+#printRoot:not(.bw) .pst .tag.power{background:#fdf0cf}
+#printRoot.bw .pst .tag.dbox{border:none;background:#fff!important}
+
+/* v1.61 */
+#printRoot{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;font-weight:500}
+#printRoot .rpage{padding:20mm}
+#printRoot .measure{width:170mm}
+#printRoot .sh{text-align:left;font-size:18px;font-weight:700;padding:13px 0 6px}
+#printRoot .rhead b{font-weight:700}
+#printRoot td,#printRoot .nd1,#printRoot .rq2{font-size:15px}
+#printRoot table.cht{border-collapse:collapse;width:100%}
+#printRoot table.cht td{border:1px solid #333;padding:5px 9px;font-size:15px;line-height:1.3;vertical-align:middle}
+#printRoot table.cht td.n{width:46px;background:#b8b8b8;font-weight:700;white-space:nowrap}
+#printRoot table.cht td.inf{color:#222}
+#printRoot .cg table.cht td{font-size:14px;padding:4px 7px;line-height:1.3;white-space:nowrap}
+#printRoot .cg table.cht td.n{width:40px}
+#printRoot .cg{gap:0 16px;padding-bottom:6px}
+
+/* v1.62 */
+#printRoot .rhead{font-size:12.5px;color:#333;border-bottom:1px solid #888;align-items:baseline}
+#printRoot .rhead b{font-size:16px}
+#printRoot .rhead.wl{align-items:center}
+#printRoot .rmid{display:flex;flex-direction:row;align-items:center;gap:8px;font-size:16px}
+#printRoot .rlogo{max-height:9mm;max-width:45mm;object-fit:contain}
+#printRoot .nd1 b{flex:0 0 30px}
+/* táblázat és blokkfejléc színe közelebb egymáshoz */
+#printRoot table.cht td{border-color:#59636c}
+#printRoot table.cht td.n{background:#cdd5dc}
+#printRoot .pst .bh{background:#dbe2e8}
+#printRoot.bw table.cht td.n{background:#d2d2d2}
+#printRoot.bw .pst .bh{background:#e2e2e2}
+
+/* v1.63 */
+#printRoot .rpage{padding:14mm 20mm}
+#printRoot .rlogow{height:14mm;display:flex;align-items:center;justify-content:center}
+#printRoot .rlogo{max-height:12mm;max-width:80mm;object-fit:contain}
+#printRoot .rhead{height:9mm}
+#printRoot .cg{gap:0 10px}
+#printRoot .cg table.cht td{font-size:12.5px;padding:3px 5px;line-height:1.25;white-space:normal}
+#printRoot .cg table.cht td.n{width:32px;white-space:nowrap}
+#printRoot .cg table.cht td:nth-child(2){white-space:nowrap}
+
+/* v1.64 */
+#printRoot{font-size:14px}
+#printRoot td,#printRoot .nd1,#printRoot .rq2{font-size:14px}
+#printRoot table.cht{table-layout:fixed}
+#printRoot table.cht td,#printRoot .cg table.cht td{font-size:13.5px;padding:3px 7px;line-height:1.3;white-space:nowrap;overflow:hidden}
+#printRoot table.cht td.n{width:auto;text-align:left}
+#printRoot table.cht tr.w2 td{font-size:12.5px;color:#333}
+#printRoot .cg{gap:0 12px}
+.pdfn{font-size:12px;font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;margin-left:10px}
+.pdfn.warn{color:var(--accent)}
+/* DI-Box: egy keret, a DI felirat vastagabb */
+.tag.dbox{border:1.5px solid currentColor;font-weight:600}
+.tag.dbox .dil{font-weight:900;letter-spacing:.02em}
 </style>
 </head>
 <body>
@@ -622,7 +706,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <header id="top">
   <button id="menuL" class="btn ico only-small" aria-label="Menü">☰</button>
   <button id="homeBtn" class="btn ico" title="Projektek" aria-label="Projektek"><svg viewBox="0 0 16 16" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.8 6.3V13.5h3V10h2.4v3.5h3V6.3"/></svg></button>
-  <b class="brand">RiderMaker2000 <small id="verLbl">v1.55</small></b>
+  <b class="brand">RiderMaker2000 <small id="verLbl">v1.65</small></b>
   <input id="bandName" type="text" placeholder="Zenekar neve">
   <span id="verBox"><input id="verName" type="text" placeholder="Verzió neve" title="Verzió neve"><select id="verSel" title="Verziók"></select></span>
   <select id="tabSel" title="Nézet"><option value="stage">Stageplot</option><option value="ch">Csatornalista</option><option value="req">Kérések</option><option value="con">Kontaktok</option></select>
@@ -642,7 +726,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <div id="scrim"></div>
 <div id="toast"></div>
 <div id="dlg"><div class="dbox"><b id="dlgT">Új projekt</b><input type="text" id="dlgI" placeholder="Zenekar / projekt neve"><div class="line"><button class="btn pri" id="dlgOk">Létrehozás</button><button class="btn" id="dlgNo">Mégse</button></div></div></div>
-<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.55</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
+<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.65</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
 <p>Technikai rider egy helyen: stageplot, csatornalista, kérések és kontaktok, a végén egy tiszta, kinyomtatható PDF.</p>
 <h2>1. Hol vannak az adataid?</h2>
 <p><b>Minden automatikusan mentődik, a böngészőbe, ezen az eszközön.</b> Nincs fiók, nincs szerver, a ridereidet senki más nem látja, a GitHubra csak maga a program kerül fel.</p>
@@ -670,7 +754,8 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <li><b>Áram:</b> „230V áram a jelölt helyekre”, kérésre darabszámmal.</li>
 <li><b>Megjegyzés.</b></li>
 </ul></li>
-<li><b>Tömörítés:</b> sok sorból egy rövid összefoglaló (pl. dob). A <b>Kiemelt</b> sor tömörítve is külön látszik.</li>
+<li><b>Tömörítés:</b> sok sorból egy rövid összefoglaló (pl. dob). A <b>Kiemelt</b> sor (input, output vagy áram) tömörítve is külön látszik.</li>
+<li><b>Hely:</b> bármelyik sor rögzíthető a blokk tetejére vagy aljára (pl. az áram mindig alul). A többi sort a blokkon belül szabadon húzod.</li>
 <li><b>Szövegméret</b> beírható, több kijelölt blokknál együtt állítod.</li>
 <li><b>Eszköztár:</b> rendezői/színpadi nézet, mozgatás, snap, méretek, zoom, színpadméret. Shift + klikk: több kijelölés, Option + húzás: másolás, Cmd + húzás: snap nélkül, Delete: törlés, nyilak: finom mozgatás.</li>
 <li>Telefonon a blokk-szerkesztő alul összecsukható sáv.</li>
@@ -684,6 +769,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <li><b>Kézi csatornalista</b> (☰ menü): a lista leválik a stageplotról, szabadon írod és törlöd, semmi nem tolódik. Visszakapcsolva a meglévő sorok kézi sorok maradnak, csak az új stageplot elemek kapnak csatornát.</li>
 <li><b>Kézi sorok</b> (szürke csoport): csak a listán élnek, a stageploton nem. Blokk törlésekor a program megkérdezi, megtartsa-e a csatornáit kézi sorként.</li>
 <li>Oszlopok ki-be kapcsolhatók, a zöld mező = kitöltve.</li>
+<li>A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). Az <b>Okos sor</b> kapcsolóval az infó egy összegző sorban jelenik meg, típus nélkül. Ha nem fér el, kevesebb hasáb lesz.</li>
 </ul>
 <h3>Kérések</h3>
 <ul>
@@ -693,9 +779,9 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <li><b>Egyéb megjegyzés:</b> szabad szöveg a végére.</li>
 </ul>
 <h3>Kontaktok</h3>
-<p>Név, szerep, telefon, e-mail. A ☆ Mentés gombbal kontakt presetet csinálsz, legközelebb egy koppintással hozzáadod. Itt látod a PDF címét, és itt állítod a dátumot (üresen az exportálás napja).</p>
+<p>Név, szerep, telefon, e-mail. A ☆ Mentés gombbal kontakt presetet csinálsz, legközelebb egy koppintással hozzáadod. Itt látod a PDF címét, itt állítod a dátumot (üresen az exportálás napja), és itt töltöd fel a <b>logót</b>, ami a PDF minden oldalának tetejére kerül.</p>
 <h3>PDF</h3>
-<p><b>PDF</b> gomb → az ablak jelzi, ha valami fontos hiányzik (de nem akadályoz). Minden oldalon fejléc: dátum, „Projekt · Verzió – tech rider”, oldalszám. Sorrend: kontaktok, stageplot, csatornalista, amire szükségünk van, backline, kérések, megjegyzés. Van <b>fekete-fehér</b> opció (saját = folytonos vonal, helyi = szaggatott). A fájlnév a címből és a dátumból jön, a szöveg kimásolható.</p>
+<p><b>PDF</b> gomb → az ablak jelzi, ha valami fontos hiányzik (de nem akadályoz). Minden oldalon fejléc: dátum, „Projekt · Verzió – tech rider”, oldalszám. Sorrend: kontaktok, stageplot, csatornalista, amire szükségünk van, backline, kérések, megjegyzés. A csatornalista táblázatban a sorszám mellett csak a forrás és egy összegző <b>Info</b> oszlop van (pl. „SM58 · nagy állvány”), abba is csak az kerül, ami ki van töltve. A lista 8 soronként hasábot vált: 8 sor egy hasáb, 16 kettő, 24-től három. Ha a szöveg nem fér el, kevesebb hasáb lesz. Egy sor mindig egy sor. Ha a lista nem fér az első oldalra, a stageplot kicsit kisebb lesz. Van <b>fekete-fehér</b> opció (saját = folytonos vonal, helyi = szaggatott). A fájlnév a címből és a dátumból jön, a szöveg kimásolható.</p>
 <h2>4. A filozófia</h2>
 <ul>
 <li><b>A rider a helyi technikusnak szól.</b> Csak az kerül bele, ami neki feladat: amit kérünk, és ami a munkájához kell. A saját eszközeid a rajzon jelölve vannak, de a kért listában nem szerepelnek.</li>
@@ -706,6 +792,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <li><b>Technikai rider, nem szerződés:</b> nincs benne catering, fény, PA-követelmény. A telefonos egyeztetést nem váltja ki, hanem előkészíti.</li>
 </ul></div></div></div>
 <div id="pmenu"></div>
+<input type="file" id="logoFile" accept="image/*" hidden>
 <div id="dlgS"><div class="dbox"><b>Mentés fájlba</b>
   <div class="mx"><div class="mxh">Projektek</div>
     <label><input type="radio" name="sScope" value="ver" checked> Ez a verzió</label>
@@ -737,7 +824,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
     <div class="phead only-small"><b>Menü</b><button class="btn sm" data-close>✕ Bezár</button></div>
 
     
-    <div class="stack"><button id="helpBtn" class="btn">📖 Leírás és mentés</button></div>
+    <div class="stack"><button id="helpBtn" class="btn">📖 Leírás</button></div>
     <h3>Csatornák</h3>
     <div class="stack">
       <label class="mantog"><input type="checkbox" id="manTog"><span class="mt1">Kézi csatornalista</span><span class="mt2" id="manTxt"></span></label>
@@ -841,7 +928,7 @@ const ROW = {
   power: () => ({id:uid(), type:'power', label:'', volt:'230V', count:1, own:false}),
   note:  () => ({id:uid(), type:'note', text:''})
 };
-const newBlock = (x, y) => ({id:uid(), x, y, w:240, h:null, fs:15, auto:true, title:'Hangszer', name:'', comp:false, rows:[]});
+const newBlock = (x, y) => ({id:uid(), x, y, w:280, h:null, fs:18, auto:true, title:'Hangszer', name:'', comp:false, rows:[]});
 const defaultState = () => ({v:4, name:'', stage:{w:8, d:6}, showSize:false, snap:true, flip:false, flipMove:true, numbering:'auto', opMode:'both', req:null, contacts:[], date:'', offIn:0, offOut:0, accepted:{},
   cols:{src:true, kind:true, model:true, stand:true, rf:true, dbox:true, note:false}, blocks:[]});
 
@@ -887,8 +974,10 @@ function normalize(o) {
   s.req = normReq(o && o.req, o && o.accepted);
   s.contacts = Array.isArray(o && o.contacts) ? o.contacts.map(c => ({id:c.id || uid(), name:String(c.name || ''), role:String(c.role || ''), phone:String(c.phone || ''), email:String(c.email || '')})) : [];
   s.date = String((o && o.date) || '');
+  s.logo = (o && typeof o.logo === 'string' && o.logo.indexOf('data:image/') === 0) ? o.logo : '';
   s.opMode = ['both', 'num', 'cont'].indexOf(s.opMode) >= 0 ? s.opMode : 'both';
   s.flip = !!s.flip;
+  s.smart = !!(o && o.smart);
   s.flipMove = (o && o.flipMove !== undefined) ? !!o.flipMove : !(o && o.flipKeep);
   s.stage = Object.assign({w:8, d:6}, (o && o.stage) || {});
   s.accepted = {};
@@ -1123,7 +1212,15 @@ function persist() {
   const d = new Date();
   $('#saved').textContent = ok ? 'Automatikusan mentve ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') : 'Az automatikus mentés nem elérhető, használd a fájlmentést';
 }
+function enforceLocks() {
+  for (const b of S.blocks) {
+    if (!b.rows.some(r => r.lock)) continue;
+    const t = b.rows.filter(r => r.lock === 'top'), m = b.rows.filter(r => r.lock !== 'top' && r.lock !== 'bottom'), bo = b.rows.filter(r => r.lock === 'bottom');
+    b.rows = t.concat(m, bo);
+  }
+}
 function commit() {
+  enforceLocks();
   const j = JSON.stringify(S);
   if (hist[hi] === j) { persist(); return; }
   hist = hist.slice(0, hi + 1);
@@ -1152,6 +1249,8 @@ const mchFld = r => {
   const c = chMap[t.id], fixd = t.chStart > 0 && !S.manual && !r.noCh;
   return fld('Manuális sorszám', '<input type="text" inputmode="numeric" data-mch="' + t.id + '" value="' + (S.manual || r.noCh ? (c ? c[0] : '') : (t.chStart > 0 ? t.chStart : '')) + '" placeholder="auto: ' + (c ? c[0] : '–') + '"' + (fixd ? ' class="fix"' : '') + '>');
 };
+const lockProp = r => '<div class="prop' + (r.lock ? ' on' : '') + '" title="Hol legyen ez a sor a blokkon belül"><span class="pt">Hely</span><select data-f="lock" data-rid="' + r.id + '">' +
+  [['', 'szabad'], ['top', 'mindig felül'], ['bottom', 'mindig alul']].map(o => '<option value="' + o[0] + '"' + ((r.lock || '') === o[0] ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></div>';
 const pinProp = (r, comp) => '<div class="prop' + (r.pin ? ' on' : '') + (comp ? '' : ' dim2') + '" title="' + (comp ? 'Tömörítés mellett is külön sorban látszik' : 'Akkor számít, ha a blokk tömörített: ez a sor akkor is külön látszik') + '"><span class="pt">Kiemelt</span><label class="inl"><input type="checkbox" data-f="pin" data-rid="' + r.id + '"' + (r.pin ? ' checked' : '') + '></label></div>';
 const pbox = (txt, own) => '<span class="pbox ' + (own ? 'own' : 'venue') + '">' + txt + '</span>';
 
@@ -1165,7 +1264,7 @@ function rowHTML(r) {
     const lbl = '<span class="rt">' + (filled(r.label) ? esc(r.label) : '<span class="dim">—</span>') + '</span>';
     let kind = '';
     if (r.kind === 'di') {
-      kind = '<span class="tag dbox ' + oc(r.own) + '">DI-Box' + (filled(r.model) ? ' · ' + esc(r.model) : '') + (cnt(r) > 1 ? ' ×' + cnt(r) : '') +
+      kind = '<span class="tag dbox ' + oc(r.own) + '"><b class="dil">DI</b>-Box' + (filled(r.model) ? ' · ' + esc(r.model) : '') + (cnt(r) > 1 ? ' ×' + cnt(r) : '') +
         (r.dbox === 'active' ? ' · aktív' : r.dbox === 'passive' ? ' · passzív' : r.dbox === 'both' ? ' · akt./pass.' : '') + '</span>';
     } else if (r.kind === 'mic') kind = pbox(filled(r.model) ? esc(r.model) : 'mikrofon', r.own);
     else if (r.kind) kind = pbox(IN_TXT[r.kind], r.own);
@@ -1198,9 +1297,10 @@ function rangesTxt(nums) {
 }
 function compHTML(b) {
   let h = '';
-  const pinned = b.rows.filter(r => r.pin && !r.gap && (r.type === 'in' || r.type === 'out'));
+  const isInd = r => r.type === 'note' || (r.pin && !r.gap && (r.type === 'in' || r.type === 'out' || r.type === 'power'));
+  const ind = b.rows.filter(isInd);
   const cb = b;
-  b = Object.assign({}, cb, {rows:cb.rows.filter(r => !(r.pin && !r.gap && (r.type === 'in' || r.type === 'out')))});
+  b = Object.assign({}, cb, {rows:cb.rows.filter(r => !isInd(r))});
   const chans = type => { const a = []; for (const r of b.rows) if (r.type === type && !r.gap && chMap[r.id]) for (let n = chMap[r.id][0]; n <= chMap[r.id][1]; n++) a.push(n); return a; };
   const ins = chans('in'), outs = chans('out');
   if (ins.length) h += '<div class="row"><span class="tag in">IN ' + rangesTxt(ins) + '</span><span class="rt">' + ins.length + ' csatorna</span></div>';
@@ -1222,14 +1322,13 @@ function compHTML(b) {
   Object.keys(g).sort().forEach(k => {
     const q = k.split('|'), c = g[k];
     if (q[0] === 'st') cat.st.push(pbox(c + '× ' + (q[1] === 'S' ? 'kis állvány' : 'nagy állvány'), q[2] === '1'));
-    else if (q[0] === 'di') cat.di.push('<span class="tag dbox ' + oc(q[1] === '1') + '">DI-Box ×' + c + '</span>');
+    else if (q[0] === 'di') cat.di.push('<span class="tag dbox ' + oc(q[1] === '1') + '"><b class="dil">DI</b>-Box ×' + c + '</span>');
     else if (q[0] === 'rf') cat.rf.push(pbox('RF ×' + c, q[1] === '1'));
     else cat.pw.push('<span class="tag power ' + oc(q[2] === '1') + '"><span class="bolt">⚡ </span>' + esc(q[1]) + ' ×' + c + '</span>');
   });
   ['st', 'di', 'rf', 'pw'].forEach(k => { if (cat[k].length) h += '<div class="row">' + cat[k].join('') + '</div>'; });
-  h += pinned.map(rowHTML).join('');
-  h += b.rows.filter(r => r.type === 'note').map(rowHTML).join('');
-  return h;
+  const top = ind.filter(r => r.lock === 'top'), bot = ind.filter(r => r.lock === 'bottom'), mid = ind.filter(r => r.lock !== 'top' && r.lock !== 'bottom');
+  return top.map(rowHTML).join('') + h + mid.map(rowHTML).join('') + bot.map(rowHTML).join('');
 }
 
 function blockHTML(b) {
@@ -1325,7 +1424,7 @@ function rowEditor(r, i, n) {
   const id = r.id, ctrl = ctrlHTML(r, i, n);
   if (r.type === 'note') {
     return '<div class="rcard" data-rid="' + id + '"><div class="rh"><span class="ty note">Megjegyzés</span><span class="sp"></span>' + ctrl + '</div>' +
-      fld('Szöveg', inpHTML('text', id, r.text, 'szabad szöveg'), true) + '</div>';
+      fld('Szöveg', inpHTML('text', id, r.text, 'szabad szöveg'), true) + '<div class="props">' + lockProp(r) + '</div></div>';
   }
   if (r.type === 'in') {
     const hasModel = r.kind === 'mic' || r.kind === 'di';
@@ -1341,7 +1440,7 @@ function rowEditor(r, i, n) {
       '<div class="props">' +
         (r.kind === 'mic' ? '<div class="prop' + (r.stand ? ' on' : '') + '"><span class="pt">Állvány</span>' + selHTML(STAND_OPT, r.stand, 'stand', id) + (r.stand ? pOwn(r, 'standOwn') : '') + '</div>' : '') +
         (r.kind === 'di' ? '<div class="prop' + (r.dbox ? ' on' : '') + '"><span class="pt">DI-Box</span>' + selHTML(DBOX_OPT, r.dbox, 'dbox', id) + '</div>' : '') +
-        pinProp(r, !!(curBlock() && curBlock().comp)) +
+        pinProp(r, !!(curBlock() && curBlock().comp)) + lockProp(r) +
       '</div>' +
       fld('Megjegyzés', inpHTML('note', id, r.note, 'nem kötelező'), true) + '</div>';
   }
@@ -1350,13 +1449,13 @@ function rowEditor(r, i, n) {
       '<div class="grid21">' + (r.kind === 'main' ? fld('Megnevezés', inpHTML('label', id, r.label, 'pl. L, R, Sub')) : fld('Cél', inpHTML('label', id, r.label, (curBlock() && curBlock().title) || 'pl. dob'))) + mchFld(r) + '</div>' +
       '<div class="devbox"><div class="dvr">' + fld('Típus', selHTML(OUT_OPT, r.kind, 'kind', id, 'ok')) + '<span></span></div>' +
       '<div class="dvr2">' + ownLine(r, 'Eszköz') + (r.kind === 'iem' ? rfProp(r) : '<div class="prop ghost"></div>') + '</div></div>' +
-      '<div class="props">' + pinProp(r, !!(curBlock() && curBlock().comp)) + '</div>' +
+      '<div class="props">' + pinProp(r, !!(curBlock() && curBlock().comp)) + lockProp(r) + '</div>' +
       fld('Megjegyzés', inpHTML('note', id, r.note, 'nem kötelező'), true) + '</div>';
   }
   if (r.type === 'power') {
     return '<div class="rcard" data-rid="' + id + '"><div class="rh"><span class="ty power">Áram</span><span class="sp"></span>' + ctrl + '</div>' +
       '<div class="grid2">' + fld('Feszültség', inpHTML('volt', id, r.volt, '230V', 'ok').replace('<input ', '<input list="volts" ')) + fld('Darab', inpHTML('count', id, r.count, '', '', 'number')) + '</div>' +
-      '<div class="props">' + ownLine(r, 'Áram') + '<div class="prop' + (r.showN ? ' on' : '') + '" title="A PDF-ben szerepeljen-e a darabszám"><span class="pt">Darab a PDF-ben</span><label class="inl"><input type="checkbox" data-f="showN" data-rid="' + r.id + '"' + (r.showN ? ' checked' : '') + '></label></div></div>' + fld('Megjegyzés', inpHTML('label', id, r.label, 'nem kötelező'), true) + '</div>';
+      '<div class="props">' + ownLine(r, 'Áram') + '<div class="prop' + (r.showN ? ' on' : '') + '" title="A PDF-ben szerepeljen-e a darabszám"><span class="pt">Darab a PDF-ben</span><label class="inl"><input type="checkbox" data-f="showN" data-rid="' + r.id + '"' + (r.showN ? ' checked' : '') + '></label></div>' + pinProp(r, !!(curBlock() && curBlock().comp)) + lockProp(r) + '</div>' + fld('Megjegyzés', inpHTML('label', id, r.label, 'nem kötelező'), true) + '</div>';
   }
   return '';
 }
@@ -1535,7 +1634,7 @@ function chTable(type) {
       '<button class="btn sm add" data-act="rowadd" data-bid="' + g.b.id + '" data-type="' + type + '">+ sor</button></span></span></td></tr>';
     g.rows.forEach(x => {
       const r = x.r, fix = r.chStart > 0 && !x.b.hidden;
-      h += '<tr class="' + (r.gap ? 'gap' : '') + '" data-rid="' + r.id + '"><td class="chc"><input type="text" inputmode="numeric" class="chn' + (fix && !S.manual ? ' fix' : '') + '" data-ch="' + r.id + '" value="' + x.ch[0] + '">' + (fix && !S.manual ? '<button class="pinb" data-act="unpin" data-rid="' + r.id + '" title="Fix kezdőszám. Koppints rá, hogy újra automatikus legyen.">📌</button>' : '') + (!x.b.hidden ? '<span class="lnk" title="A stageplothoz kötött sor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 9.5l3-3"/><path d="M7 4.8l1.2-1.2a2.6 2.6 0 0 1 3.7 3.7L10.7 8.5"/><path d="M9 11.2l-1.2 1.2a2.6 2.6 0 0 1-3.7-3.7L5.3 7.5"/></svg></span>' : '') + '</td>' +
+      h += '<tr class="' + (r.gap ? 'gap' : '') + '' + '" data-rid="' + r.id + '"><td class="chc"><input type="text" inputmode="numeric" class="chn' + (fix && !S.manual ? ' fix' : '') + '" data-ch="' + r.id + '" value="' + x.ch[0] + '">' + (fix && !S.manual ? '<button class="pinb" data-act="unpin" data-rid="' + r.id + '" title="Fix kezdőszám. Koppints rá, hogy újra automatikus legyen.">📌</button>' : '') + (!x.b.hidden ? '<span class="lnk" title="A stageplothoz kötött sor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 9.5l3-3"/><path d="M7 4.8l1.2-1.2a2.6 2.6 0 0 1 3.7 3.7L10.7 8.5"/><path d="M9 11.2l-1.2 1.2a2.6 2.6 0 0 1-3.7-3.7L5.3 7.5"/></svg></span>' : '') + '</td>' +
         keys.map(k => '<td>' + chCell(type, k, x) + '</td>').join('') +
         '<td class="ctl"><span class="dh" data-drag="' + r.id + '" title="Húzd a sor mozgatásához">⠿</span>' +
         '<button class="btn sm ico tiny danger" data-act="ldel" data-rid="' + r.id + '" title="Sor törlése">✕</button></td></tr>';
@@ -1554,8 +1653,14 @@ function renderChannels() {
     (S.manual ? '<span class="manb" title="A ☰ menüben kapcsolható">Kézi mód</span>' : '') +
     '<div class="colchips"><span class="cl">Oszlopok:</span>' +
     Object.keys(COL_FULL).map(k => '<label class="cchip' + (colOn(k) ? ' on' : '') + '"><input type="checkbox" data-col="' + k + '"' + (colOn(k) ? ' checked' : '') + '><span class="lsl">' + COL_FULL[k] + '</span><span class="lsh">' + COL_SHORT[k] + '</span></label>').join('') + '</div>' +
+    '<label class="cchip' + (S.smart ? ' on' : '') + '" title="Az infó egy összegző sorban, típus nélkül"><input type="checkbox" data-smart="1"' + (S.smart ? ' checked' : '') + '><span>Okos sor (PDF)</span></label>' +
     '<details class="pp"><summary class="qm">?</summary><div class="ppb"><p class="hint">' + (S.manual ? 'Kézi mód: a csatornalista független a stageplottól. Számot szabadon átírhatsz, a többi nem tolódik. Húzáskor a számok a helyükön maradnak, a tartalom mozog. ' : '') + 'A 🔗 jelű sorok a stageplothoz kötöttek. A számok a sorrendből jönnek. A sorokat a ⠿ fogantyúval húzhatod, ez csak a sorrendet változtatja, a stageplotot nem. Ha átírsz egy számot, onnan folytatódik a számozás, és 📌 jelzi a fix kezdőszámot. A 📌-re koppintva (vagy a szám törlésével) újra automatikus lesz. Zöld mező = kitöltve, szürke dőlt = automatikus érték. A „Kézi sorok” csak a listán vannak, a stageploton nem.</p></div></details></div></div>';
-  h += '<h2>Input</h2>' + chTable('in') + '<h2>Output</h2>' + chTable('out');
+  const pdfNote = t => {
+    const Lo = chLayout(t);
+    if (!Lo) return '';
+    return '<span class="pdfn' + (Lo.short ? ' warn' : '') + '" title="Így kerül a PDF-be">PDF: ' + Lo.cols + ' hasáb' + (Lo.smart ? ' · okos sor' : '') + ' · ' + Lo.n + ' sor' + (Lo.short ? ' (kevesebb hasáb, mert nem fér el)' : '') + '</span>';
+  };
+  h += '<h2>Input ' + pdfNote('in') + '</h2>' + chTable('in') + '<h2>Output ' + pdfNote('out') + '</h2>' + chTable('out');
   $('#chPane').innerHTML = h;
   { const d = $('.coldrop'); if (d && d.open && window.placePop) window.placePop(d); }
   [...$$('.tw')].forEach((e, i) => { if (tws[i]) e.scrollLeft = tws[i]; });
@@ -2160,7 +2265,8 @@ const riderTitle = () => titleOf(S);
 function renderContacts() {
   const cs = S.contacts;
   let h = '<div class="chbar"><b>Rider fejléc</b><div class="cinfo"><div class="f"><label>Cím a PDF-ben</label><input type="text" id="conTitle" value="' + esc(riderTitle()) + '" readonly></div>' +
-    '<div class="f"><label>Dátum</label><input type="date" id="conDate" value="' + esc(S.date) + '"></div><span class="hint2 cdh">Ha a dátum üres, az exportálás napja kerül a PDF-be.</span></div></div>' +
+    '<div class="f"><label>Dátum</label><input type="date" id="conDate" value="' + esc(S.date) + '"></div><span class="hint2 cdh">Ha a dátum üres, az exportálás napja kerül a PDF-be.</span>' +
+    '<div class="f logof"><label>Logó (a PDF minden oldalának tetején)</label><div class="line">' + (S.logo ? '<img class="logop" src="' + S.logo + '" alt=""><button class="btn sm" data-cact="logo">Csere</button><button class="btn sm danger" data-cact="logodel">Törlés</button>' : '<button class="btn sm" data-cact="logo">Logó feltöltése</button><span class="hint2">PNG vagy JPG, átlátszó háttér is jó</span>') + '</div></div></div></div>' +
     '<div class="chbar"><div class="line"><b>Kontaktok</b><button class="btn pri" data-cact="add">+ Új kontakt</button></div>' +
     (conPresets().length ? '<div class="cpre"><span class="hint2">Mentett kontaktok:</span>' + conPresets().map((p, i) => '<span class="chipb"><button class="btn sm" data-cact="padd" data-i="' + i + '" title="Hozzáadás">+ ' + esc(p.name || p.phone || 'névtelen') + (filled(p.role) ? ' · ' + esc(p.role) : '') + '</button><button class="btn sm ico" data-cact="pdel" data-i="' + i + '" title="Törlés a mentettek közül">✕</button></span>').join('') + '</div>' : '') +
     (cs.length ? cs.map(c => '<div class="ccard" data-cid="' + c.id + '">' +
@@ -2232,63 +2338,100 @@ function printMissing() {
 }
 const mmpx = v => { const d = document.createElement('div'); d.style.cssText = 'position:absolute;visibility:hidden;width:' + v + 'mm;height:1px'; document.body.appendChild(d); const w = d.offsetWidth; d.remove(); return w; };
 const CHUNK_W = {src:120, kind:78, model:100, stand:44, rf:30, note:120};
-function chSection(type, pw) {
+/* a PDF csatornalista elrendezése (a PDF és a szerkesztő előnézete ugyanezt használja)
+   szabály: 8 sor = 1 hasáb, 16 = 2, 24-től 3; ha a szöveg nem fér el, kevesebb hasáb.
+   egy sor mindig egy sor, nincs törés. Okos sor: az info egy összegző cellában. */
+const PDF_CH_FS = 13.5, CH_GAP = 12, CH_NW = 36, CH_PER = 8, CH_MAXC = 3;
+function chLayout(type) {
   const rows = chRows(type).filter(x => !x.r.gap);
   if (!rows.length) return null;
-  let keys = (type === 'in' ? COLS_IN : COLS_OUT).filter(colOn);
-  const val = (k, x) => {
-    const r = x.r;
-    switch (k) {
-      case 'src':
-        if (type === 'out') {
-          const nm = r.kind === 'main' ? r.label : (r.label || (x.b.hidden ? '' : x.b.title));
-          return [nm, OUT_OPT[r.kind] + (r.kind === 'iem' && r.rf ? ' (RF)' : '')].filter(filled).join(' · ');
-        }
-        return r.label;
-      case 'kind': return (type === 'in' ? IN_OPT : OUT_OPT)[r.kind] || '';
-      case 'model':
-        if (type !== 'in') return '';
-        if (r.kind === 'di') return [r.dbox ? DBOX_OPT[r.dbox] : '', r.model].filter(filled).join(' · ');
-        return r.kind === 'mic' ? r.model : '';
-      case 'stand': return (type === 'in' && r.kind === 'mic' && r.stand) ? STAND_SHORT[r.stand] : '';
-      case 'rf': return r.rf && (type === 'in' || r.kind === 'iem') ? 'RF' : '';
-      case 'note': return r.note;
+  const on = k => colOn(k);
+  const info = x => {
+    const r = x.r, a = [];
+    if (type === 'in') {
+      /* csak a konkrét eszköz és a jelölés; a típusszó (mikrofon, DI) nem foglal helyet, ha nincs kitöltve */
+      if (r.kind === 'mic') { if (on('model') && filled(r.model)) a.push(r.model); }
+      else if (r.kind === 'di') {
+        const t = on('model') ? [r.dbox ? DBOX_OPT[r.dbox] : '', r.model].filter(filled).join(' ') : '';
+        a.push('DI' + (t ? ' (' + t + ')' : ''));
+      }
+      else if (r.kind && on('kind')) a.push(IN_OPT[r.kind] || '');
+      if (on('stand') && r.kind === 'mic' && r.stand) a.push(r.stand === 'S' ? 'kis állvány' : 'nagy állvány');
+      if (on('rf') && r.rf) a.push('RF');
+    } else {
+      if (r.kind === 'iem' && r.rf) a.push('RF');
     }
-    return '';
+    if (on('note') && filled(r.note)) a.push(r.note);
+    return a.filter(filled).join(' · ');
   };
-  if (type === 'out') keys = keys.filter(k => k !== 'kind' && k !== 'rf');
-  keys = keys.filter(k => k === 'src' || k === 'kind' || rows.some(x => filled(val(k, x))));
-  const colW = k => {
-    const hd = k === 'src' ? (type === 'out' ? 'Cél' : 'Forrás') : COL_HEAD(k, type);
-    const m = Math.max(String(hd).length * 0.85, ...rows.map(x => String(val(k, x) || '').length));
-    return Math.min(180, Math.max(34, Math.round(m * 6.6 + 14)));
+  const src = x => {
+    const r = x.r;
+    if (type === 'out') {
+      const nm = r.kind === 'main' ? r.label : (r.label || (x.b.hidden ? '' : x.b.title));
+      return [nm, OUT_OPT[r.kind]].filter(filled).join(' · ');
+    }
+    return r.label;
   };
-  const cw = 32 + keys.reduce((a, k) => a + colW(k), 0);
-  const per = clamp(Math.floor((pw * 1.06 + 18) / (cw + 18)), 1, 3);
-  const tbl = rs => '<table><thead><tr><th>' + (type === 'in' ? 'IN' : 'OUT') + '</th>' + keys.map(k => '<th>' + esc2(COL_HEAD(k, type)) + '</th>').join('') + '</tr></thead><tbody>' +
-    rs.map(x => '<tr><td class="n">' + (x.ch[0] === x.ch[1] ? x.ch[0] : x.ch[0] + '–' + x.ch[1]) + '</td>' + keys.map(k => '<td>' + esc2(val(k, x)) + '</td>').join('') + '</tr>').join('') + '</tbody></table>';
-  const chunks = [];
-  const size = rows.length > 8 ? 8 : rows.length;
-  for (let i = 0; i < rows.length; i += size) chunks.push(tbl(rows.slice(i, i + size)));
-  const items = [];
-  if (rows.length <= 8) items.push('<div class="cg" style="grid-template-columns:minmax(0,' + Math.min(pw, Math.round(cw * 1.5)) + 'px)">' + chunks[0] + '</div>');
-  else for (let i = 0; i < chunks.length; i += per) items.push('<div class="cg" style="grid-template-columns:repeat(' + per + ',minmax(0,1fr))">' + chunks.slice(i, i + per).join('') + '</div>');
-  return {head:type === 'in' ? 'Input lista' : 'Output lista', open:'<div class="items">', close:'</div>', items, sel:'.items>*', min:1};
+  const smart = !!S.smart, n = rows.length;
+  const hasInfo = !smart && rows.some(x => filled(info(x)));
+  const cell = x => [src(x), info(x)].filter(filled).join(' · ');
+  const cv = chLayout._cv || (chLayout._cv = document.createElement('canvas')), ctx = cv.getContext('2d');
+  ctx.font = '500 ' + PDF_CH_FS + 'px "Helvetica Neue",Helvetica,Arial,sans-serif';
+  const tw = t => ctx.measureText(String(t || '')).width + 14;
+  const pw = mmpx(170);
+  const maxS = Math.max(...rows.map(x => tw(src(x))));
+  const maxI = hasInfo ? Math.max(0, ...rows.map(x => tw(info(x)))) : 0;
+  const maxC = smart ? Math.max(...rows.map(x => tw(cell(x)))) : 0;
+  const need = CH_NW + (smart ? maxC : maxS + maxI);
+  /* hasábszám: a sorszámtól, de csak annyi, amennyi elfér */
+  const want = Math.min(CH_MAXC, Math.ceil(n / CH_PER));
+  let cols = want;
+  while (cols > 1 && need > (pw - CH_GAP * (cols - 1)) / cols) cols--;
+  const colW = (pw - CH_GAP * (cols - 1)) / cols;
+  const srcW = hasInfo ? Math.max(maxS, colW - CH_NW - maxI) : 0;
+  return {rows, info, src, cell, smart, hasInfo, cols, want, colW, nW: CH_NW, srcW, n, short: cols < want};
 }
+function chSection(type) {
+  const Lo = chLayout(type);
+  if (!Lo) return null;
+  const {rows, info, src, cell, smart, hasInfo, cols, nW, srcW, n} = Lo;
+  const num = x => x.ch[0] === x.ch[1] ? x.ch[0] : x.ch[0] + '–' + x.ch[1];
+  const rowH = x => smart
+    ? '<tr><td class="n">' + num(x) + '</td><td>' + esc2(cell(x)) + '</td></tr>'
+    : '<tr><td class="n">' + num(x) + '</td><td>' + esc2(src(x)) + '</td>' + (hasInfo ? '<td class="inf">' + esc2(info(x)) + '</td>' : '') + '</tr>';
+  const colg = '<colgroup><col style="width:' + nW + 'px">' + (hasInfo ? '<col style="width:' + Math.round(srcW) + 'px"><col>' : '<col>') + '</colgroup>';
+  const tbl = rs => rs.length ? '<table class="cht">' + colg + '<tbody>' + rs.map(rowH).join('') + '</tbody></table>' : '<div></div>';
+  const head = type === 'in' ? 'Input lista' : 'Output lista';
+  /* elemenként legfeljebb 8 × hasáb sor (24 sor 3 hasábon), oszloponként egyenletesen */
+  const per = CH_PER * cols, items = [];
+  for (let i = 0; i < n; i += per) {
+    const ch = rows.slice(i, i + per), pc = Math.ceil(ch.length / cols), parts = [];
+    for (let j = 0; j < cols; j++) parts.push(tbl(ch.slice(j * pc, (j + 1) * pc)));
+    items.push('<div class="cg" style="grid-template-columns:repeat(' + cols + ',minmax(0,1fr))">' + parts.join('') + '</div>');
+  }
+  return {head, open:'<div class="items">', close:'</div>', items, sel:'.items>*', min:1};
+}
+/* ha a stageplot kicsit kisebbre véve az inputlista még az első oldalra fér, úgy építjük fel */
 function buildPrint() {
+  if (buildPrintK(1)) return;
+  for (const f of [0.92, 0.85]) if (buildPrintK(f)) return;
+  buildPrintK(1);
+}
+function buildPrintK(kf) {
   computeChannels();
   const bw = !!($('#dlgXbw') && $('#dlgXbw').checked);
   $('#printRoot').classList.toggle('bw', bw);
   const prev = view;
   if (view !== 'stage') { view = 'stage'; renderAll(); }
-  const pw = mmpx(180), bodyH = mmpx(252) - 8;
-  const H = stageH(), k = Math.min(pw / STAGE_W, (bodyH * 0.85) / H);
+  const headMM = S.logo ? 23 : 9, bodyMM = 264 - headMM;
+  const pw = mmpx(170), bodyH = mmpx(bodyMM) - 8;
+  const H = stageH(), k = Math.min((pw - 4) / STAGE_W, (bodyH * 0.85) / H) * kf;
   const st = $('#stage').cloneNode(true);
   st.className = mirrored() ? 'flip' : '';
   st.style.cssText = 'position:absolute;left:0;top:0;width:' + STAGE_W + 'px;height:' + H + 'px;transform:scale(' + k + ');transform-origin:0 0';
   $$('.rz', st).forEach(e => e.remove());
   $$('.block', st).forEach(e => e.classList.remove('sel', 'done'));
-  const stItem = '<div><div class="pst" style="width:' + Math.round(STAGE_W * k) + 'px;height:' + Math.round(H * k) + 'px">' + st.outerHTML + '</div>' +
+  const stItem = '<div><div class="pst" style="width:' + Math.ceil(STAGE_W * k) + 'px;height:' + Math.ceil(H * k) + 'px">' + st.outerHTML + '</div>' +
     (bw ? '<div class="legend"><span class="lgl"></span>saját &nbsp;&nbsp;&nbsp; <span class="lgl d"></span>helyi</div></div>' : '<div class="legend"><span style="color:var(--own)">■</span> kék: saját eszköz &nbsp; <span style="color:var(--venue)">■</span> piros: helyi eszköz</div></div>');
   if (prev !== 'stage') { view = prev; renderAll(); }
   const title = riderTitle(), date = fmtDay(S.date) || fmtDay(todayStr());
@@ -2297,7 +2440,7 @@ function buildPrint() {
   if (cs.length) secs.push({head:'Kontaktok', open:'<table><tbody>', close:'</tbody></table>', sel:'tbody tr', min:3,
     items:cs.map(c => '<tr><td>' + esc2(c.name) + '</td><td>' + esc2(c.role) + '</td><td>' + esc2(c.phone) + '</td><td>' + esc2(c.email) + '</td></tr>')});
   secs.push({head:'Stageplot', open:'<div class="items">', close:'</div>', sel:'.items>*', min:1, items:[stItem]});
-  ['in', 'out'].forEach(t => { const x = chSection(t, pw); if (x) secs.push(x); });
+  ['in', 'out'].forEach(t => { const x = chSection(t); if (x) secs.push(x); });
   const nt = needTexts();
   if (nt.length) {
     const pairs = nt.map(x => '<div class="nd1">' + (x.n === '' ? '' : '<b>' + esc2(x.n) + '</b><i>×</i>') + '<span>' + esc2(x.label) + '</span></div>');
@@ -2321,19 +2464,24 @@ function buildPrint() {
   meas.className = 'measure';
   root.innerHTML = '';
   root.appendChild(meas);
-  secs.forEach(sec => {
+  const measure = (sec, items) => {
     const w = document.createElement('div');
-    w.innerHTML = '<div class="sh">' + sec.head + '</div>' + sec.open + sec.items.join('') + sec.close;
+    w.innerHTML = '<div class="sh">' + sec.head + '</div>' + sec.open + items.join('') + sec.close;
     meas.appendChild(w);
-    sec.headH = w.querySelector('.sh').offsetHeight;
-    sec.hs = [...w.querySelectorAll(sec.sel)].map(e => e.offsetHeight);
-    sec.over = Math.max(0, w.offsetHeight - sec.headH - sec.hs.reduce((a, b) => a + b, 0));
+    const headH = w.querySelector('.sh').offsetHeight, hs = [...w.querySelectorAll(sec.sel)].map(e => e.offsetHeight);
+    return {headH, hs, over:Math.max(0, w.offsetHeight - headH - hs.reduce((a, b) => a + b, 0)), tot:w.offsetHeight};
+  };
+  secs.forEach(sec => {
+    Object.assign(sec, measure(sec, sec.items));
+    if (sec.alts) sec.altM = sec.alts.map(items => Object.assign({items}, measure(sec, items)));
   });
   /* oldaltörés */
   const pages = [[]];
   let rem = bodyH;
   const newPage = () => { pages.push([]); rem = bodyH; };
   secs.forEach(sec => {
+    /* ha egészben nem fér ki az oldalra, de egy másik elrendezésben (pl. több, rövidebb oszlop) igen, azt választjuk */
+    if (sec.altM && sec.tot > rem) { const a = sec.altM.find(x => x.tot <= rem); if (a) Object.assign(sec, a); }
     const n = sec.items.length;
     let i = 0;
     while (i < n) {
@@ -2359,8 +2507,11 @@ function buildPrint() {
     }
   });
   const N = pages.length;
-  root.innerHTML = pages.map((pg, idx) => '<div class="rpage"><div class="rhead"><span>' + esc2(date) + '</span><b>' + esc2(title) + '</b><span>' + (idx + 1) + ' / ' + N + '</span></div><div class="rbody">' + pg.join('') + '</div></div>').join('');
+  const logo = S.logo ? '<div class="rlogow"><img class="rlogo" src="' + S.logo + '" alt=""></div>' : '';
+  root.innerHTML = pages.map((pg, idx) => '<div class="rpage">' + logo + '<div class="rhead"><span>' + esc2(date) + '</span><b>' + esc2(title) + '</b><span>' + (idx + 1) + ' / ' + N + '</span></div><div class="rbody" style="height:' + bodyMM + 'mm">' + pg.join('') + '</div></div>').join('');
   root.classList.remove('measuring');
+  const hasIn = secs.some(x => x.head === 'Input lista');
+  return !hasIn || pages[0].some(h => h.indexOf('<div class="sh">Input lista</div>') >= 0);
 }
 function openExport() {
   const m = printMissing();
@@ -2650,6 +2801,7 @@ function onChange(e) {
   if (t.dataset.fs) { const v = parseInt(t.value, 10); if (v > 0) { setFsAll(() => v); commit(); renderAll(); } return; }
   if (t.dataset.mch) { const f = findRow(t.dataset.mch); if (f) { const v = parseInt(t.value, 10); if (v > 0) f.r.chStart = v; else delete f.r.chStart; commit(); renderAll(); } return; }
   if (t.dataset.col) { S.cols[t.dataset.col] = t.checked; commit(); renderChannels(); return; }
+  if (t.dataset.smart) { S.smart = t.checked; commit(); renderChannels(); return; }
   if (!t.dataset.f) return;
   if (t.type === 'text' || t.type === 'number') { commit(); renderStagePartial(t); return; }
   setField(t);
@@ -3098,10 +3250,32 @@ function bindUI() {
   $('#dlgXNo').addEventListener('click', () => $('#dlgX').classList.remove('on'));
   $('#dlgX').addEventListener('click', e => { if (e.target.id === 'dlgX') $('#dlgX').classList.remove('on'); });
   $('#dlgXGo').addEventListener('click', doExport);
+  $('#logoFile').addEventListener('change', e => {
+    const fl = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!fl) return;
+    const rd = new FileReader();
+    rd.onload = () => {
+      const im = new Image();
+      im.onload = () => {
+        const k = Math.min(1, 900 / im.width, 240 / im.height);
+        const cv = document.createElement('canvas');
+        cv.width = Math.max(1, Math.round(im.width * k)); cv.height = Math.max(1, Math.round(im.height * k));
+        cv.getContext('2d').drawImage(im, 0, 0, cv.width, cv.height);
+        S.logo = cv.toDataURL('image/png');
+        commit(); renderContacts(); toast('Logó beállítva');
+      };
+      im.onerror = () => toast('Ezt a képet nem tudom beolvasni.');
+      im.src = rd.result;
+    };
+    rd.readAsDataURL(fl);
+  });
   const cp = $('#conPane');
   cp.addEventListener('click', e => {
     const bt = e.target.closest('[data-cact]');
     if (!bt) return;
+    if (bt.dataset.cact === 'logo') { $('#logoFile').click(); return; }
+    if (bt.dataset.cact === 'logodel') { S.logo = ''; commit(); renderContacts(); return; }
     const ca = bt.dataset.cact;
     if (ca === 'add') S.contacts.push({id:uid(), name:'', role:'', phone:'', email:''});
     else if (ca === 'padd') { const p = conPresets()[parseInt(bt.dataset.i, 10)]; if (p) S.contacts.push({id:uid(), name:p.name || '', role:p.role || '', phone:p.phone || '', email:p.email || ''}); }
