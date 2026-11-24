@@ -697,12 +697,14 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 .pdfn.warn{color:var(--accent)}
 .pdfrow{display:flex;align-items:center;gap:10px;padding-top:8px;border-top:1px solid var(--line)}
 .pdfrow .cl{font-size:12px;color:var(--muted);flex:none}
-.sgm{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel2)}
-.sgm label{position:relative;display:flex;align-items:center;justify-content:center;height:32px;padding:0 18px;cursor:pointer;font-size:14px;white-space:nowrap}
+.pdfrow>.pp{display:inline-flex;align-items:center}
+.pdfrow>.pp>summary.qm{width:30px;height:30px}
+.sgm{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel2)}
+.sgm label{position:relative;display:flex;align-items:center;justify-content:center;height:32px;padding:0 18px;cursor:pointer;font-size:14px;font-weight:600;white-space:nowrap}
 .sgm label+label{border-left:1px solid var(--line)}
-.sgm label.on{background:#2f6b49;color:#fff;font-weight:600}
+.sgm label.on{background:#2f6b49;color:#fff}
 .sgm input{position:absolute;opacity:0;pointer-events:none;inset:0}
-@media (max-width:640px){.pdfrow{display:grid;grid-template-columns:1fr}.sgm{width:100%}.sgm label{flex:1}}
+@media (max-width:640px){.pdfrow{display:grid;grid-template-columns:1fr auto;grid-template-areas:'l q' 's s';row-gap:6px}.pdfrow>.cl{grid-area:l}.pdfrow>.pp{grid-area:q;justify-self:end}.pdfrow>.sgm{grid-area:s;width:100%}.sgm label{flex:1}}
 tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 /* DI-Box: egy keret, a DI felirat vastagabb */
 .tag.dbox{border:1.5px solid currentColor;font-weight:600}
@@ -715,7 +717,7 @@ tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 <header id="top">
   <button id="menuL" class="btn ico only-small" aria-label="Menü">☰</button>
   <button id="homeBtn" class="btn ico" title="Projektek" aria-label="Projektek"><svg viewBox="0 0 16 16" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.8 6.3V13.5h3V10h2.4v3.5h3V6.3"/></svg></button>
-  <b class="brand">RiderMaker2000 <small id="verLbl">v1.67</small></b>
+  <b class="brand">RiderMaker2000 <small id="verLbl">v1.68</small></b>
   <input id="bandName" type="text" placeholder="Zenekar neve">
   <span id="verBox"><input id="verName" type="text" placeholder="Verzió neve" title="Verzió neve"><select id="verSel" title="Verziók"></select></span>
   <select id="tabSel" title="Nézet"><option value="stage">Stageplot</option><option value="ch">Csatornalista</option><option value="req">Kérések</option><option value="con">Kontaktok</option></select>
@@ -735,7 +737,7 @@ tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 <div id="scrim"></div>
 <div id="toast"></div>
 <div id="dlg"><div class="dbox"><b id="dlgT">Új projekt</b><input type="text" id="dlgI" placeholder="Zenekar / projekt neve"><div class="line"><button class="btn pri" id="dlgOk">Létrehozás</button><button class="btn" id="dlgNo">Mégse</button></div></div></div>
-<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.67</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
+<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.68</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
 <p>Technikai rider egy helyen: stageplot, csatornalista, kérések és kontaktok, a végén egy tiszta, kinyomtatható PDF.</p>
 <h2>1. Hol vannak az adataid?</h2>
 <p><b>Minden automatikusan mentődik, a böngészőbe, ezen az eszközön.</b> Nincs fiók, nincs szerver, a ridereidet senki más nem látja, a GitHubra csak maga a program kerül fel.</p>
@@ -778,7 +780,7 @@ tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 <li><b>Kézi csatornalista</b> (☰ menü): a lista leválik a stageplotról, szabadon írod és törlöd, semmi nem tolódik. Visszakapcsolva a meglévő sorok kézi sorok maradnak, csak az új stageplot elemek kapnak csatornát.</li>
 <li><b>Kézi sorok</b> (szürke csoport): csak a listán élnek, a stageploton nem. Blokk törlésekor a program megkérdezi, megtartsa-e a csatornáit kézi sorként.</li>
 <li>Oszlopok ki-be kapcsolhatók, a zöld mező = kitöltve.</li>
-<li>A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). A <b>PDF info</b> kapcsolóval (Manuális / Auto) választod meg, hogyan kerül az infó a PDF-be. Auto: egy cellában a név után (pl. „SM58”, „aktív DI”, „mikrofon”, állvány, RF, megjegyzés). A szerkesztő oszlopai nem változnak. Ha nem fér el, az előnézet jelzi (kevesebb hasáb, vagy melyik sor nem fér ki), és a sor mellett jelölés látszik.</li>
+<li>A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). A <b>PDF info</b> kapcsolóval (Manuális / Auto) választod meg, hogyan kerül az infó a PDF-be. Auto: egy cellában a név után (pl. „SM58”, „aktív DI”, „mikrofon”, állvány, RF, megjegyzés). A szerkesztő oszlopai nem változnak. Ha nem fér el, az előnézet jelzi (kevesebb hasáb, vagy melyik sor nem fér ki), és a sor mellett jelölés látszik. Azt is jelzi, ha az input vagy az output lista a PDF-ben a következő oldalra kerül vagy átlóg. Új projekt alapból Auto módban indul, a színpad alapmérete 6 × 4 m.</li>
 </ul>
 <h3>Kérések</h3>
 <ul>
@@ -938,7 +940,7 @@ const ROW = {
   note:  () => ({id:uid(), type:'note', text:''})
 };
 const newBlock = (x, y) => ({id:uid(), x, y, w:280, h:null, fs:18, auto:true, title:'Hangszer', name:'', comp:false, rows:[]});
-const defaultState = () => ({v:4, name:'', stage:{w:8, d:6}, showSize:false, snap:true, flip:false, flipMove:true, numbering:'auto', opMode:'both', req:null, contacts:[], date:'', offIn:0, offOut:0, accepted:{},
+const defaultState = () => ({v:4, name:'', stage:{w:6, d:4}, smart:true, showSize:false, snap:true, flip:false, flipMove:true, numbering:'auto', opMode:'both', req:null, contacts:[], date:'', offIn:0, offOut:0, accepted:{},
   cols:{src:true, kind:true, model:true, stand:true, rf:true, dbox:true, note:false}, blocks:[]});
 
 const BL_DEFAULTS = ['Dob', 'Gitárláda', 'Basszusláda', 'Billentyűállvány'];
@@ -986,9 +988,9 @@ function normalize(o) {
   s.logo = (o && typeof o.logo === 'string' && o.logo.indexOf('data:image/') === 0) ? o.logo : '';
   s.opMode = ['both', 'num', 'cont'].indexOf(s.opMode) >= 0 ? s.opMode : 'both';
   s.flip = !!s.flip;
-  s.smart = !!(o && o.smart);
+  s.smart = (o && o.smart !== undefined) ? !!o.smart : true;
   s.flipMove = (o && o.flipMove !== undefined) ? !!o.flipMove : !(o && o.flipKeep);
-  s.stage = Object.assign({w:8, d:6}, (o && o.stage) || {});
+  s.stage = Object.assign({w:6, d:4}, (o && o.stage) || {});
   s.accepted = {};
   s.cols = Object.assign({}, defaultState().cols, (o && o.cols) || {});
   s.blocks = ((o && o.blocks) || []).map(b => {
@@ -1038,7 +1040,7 @@ const isSmall = () => !!(window.matchMedia && window.matchMedia('(max-width:1000
 const getBlock = id => S.blocks.find(b => b.id === id);
 const curBlock = () => (sel.size === 1 ? getBlock([...sel][0]) : null);
 const elOf = id => $('.block[data-id="' + id + '"]');
-const stageH = () => Math.round(STAGE_W * clamp((S.stage.d || 6) / (S.stage.w || 8), 0.25, 3));
+const stageH = () => Math.round(STAGE_W * clamp((S.stage.d || 4) / (S.stage.w || 6), 0.25, 3));
 const cnt = r => Math.max(1, parseInt(r.count, 10) || 1);
 const allRows = type => { const a = []; for (const b of S.blocks) for (const r of b.rows) if (r.type === type) a.push(r); return a; };
 function findRow(rid) {
@@ -1667,7 +1669,9 @@ function renderChannels() {
     '<details class="pp"><summary class="qm">?</summary><div class="ppb"><p class="hint">' + (S.manual ? 'Kézi mód: a csatornalista független a stageplottól. Számot szabadon átírhatsz, a többi nem tolódik. Húzáskor a számok a helyükön maradnak, a tartalom mozog. ' : '') + 'A 🔗 jelű sorok a stageplothoz kötöttek. A számok a sorrendből jönnek. A sorokat a ⠿ fogantyúval húzhatod, ez csak a sorrendet változtatja, a stageplotot nem. Ha átírsz egy számot, onnan folytatódik a számozás, és 📌 jelzi a fix kezdőszámot. A 📌-re koppintva (vagy a szám törlésével) újra automatikus lesz. Zöld mező = kitöltve, szürke dőlt = automatikus érték. A „Kézi sorok” csak a listán vannak, a stageploton nem.</p></div></details></div>' +
     '<div class="pdfrow"><span class="cl">PDF info:</span><span class="sgm" title="Hogyan kerül az infó a PDF csatornalistájába. A szerkesztő oszlopai nem változnak.">' +
     '<label class="' + (!S.smart ? 'on' : '') + '"><input type="radio" name="smartm" data-smart="1" value="0"' + (!S.smart ? ' checked' : '') + '><span>Manuális</span></label>' +
-    '<label class="' + (S.smart ? 'on' : '') + '"><input type="radio" name="smartm" data-smart="1" value="1"' + (S.smart ? ' checked' : '') + '><span>Auto</span></label></span></div></div>';
+    '<label class="' + (S.smart ? 'on' : '') + '"><input type="radio" name="smartm" data-smart="1" value="1"' + (S.smart ? ' checked' : '') + '><span>Auto</span></label></span>' +
+    '<details class="pp"><summary class="qm">?</summary><div class="ppb"><p class="hint"><b>PDF info:</b> azt állítja, hogyan jelenik meg az infó a PDF csatornalistájában. A szerkesztő oszlopai mindkét állásban ugyanazok, csak a PDF változik.<br><br><b>Manuális:</b> a név mellett külön Info oszlop, a bekapcsolt oszlopok tartalmával.<br><br><b>Auto:</b> minden infó egy cellában, a név után. Mikrofon: a konkrét típus (pl. SM58), ha nincs megadva, csak „mikrofon”. DI: „aktív DI” vagy „passzív DI”, ha nincs kiválasztva, csak „DI”. Utána jön az állvány, az RF és a megjegyzés, ha ki van töltve. Csak a bekapcsolt oszlopok kerülnek bele.<br><br>Ha nem fér el, a lista fölötti „PDF: …” sor jelzi.</p></div></details></div></div>';
+  const PP = printPages();
   const pdfNote = t => {
     const Lo = chLayout(t);
     if (!Lo) return '';
@@ -1675,7 +1679,11 @@ function renderChannels() {
     let w = '';
     if (Lo.cut.length) w = ' · nem fér ki egy sorban: ' + nums(Lo.cut) + ' sor';
     else if (Lo.short) w = ' (kevesebb hasáb, mert nem fér el' + (Lo.tight.length ? ': ' + nums(Lo.tight) + ' sor' : '') + ')';
-    const bad = Lo.cut.length || Lo.short;
+    const pg = PP[t === 'in' ? 'Input lista' : 'Output lista'];
+    let pw2 = '';
+    if (pg && pg[1] > 1) pw2 = pg[0] === pg[1] ? ' · ' + pg[0] + '. oldalra kerül' : ' · átlóg a következő oldalra (' + pg[0] + '–' + pg[1] + '. oldal)';
+    w += pw2;
+    const bad = Lo.cut.length || Lo.short || pw2;
     return '<span class="pdfn' + (bad ? ' warn' : '') + '" title="Így kerül a PDF-be">PDF: ' + Lo.cols + ' hasáb' + (Lo.smart ? ' · auto' : '') + ' · ' + Lo.n + ' sor' + w + '</span>';
   };
   h += '<h2>Input ' + pdfNote('in') + '</h2>' + chTable('in') + '<h2>Output ' + pdfNote('out') + '</h2>' + chTable('out');
@@ -2455,28 +2463,40 @@ function chSection(type) {
   return {head, open:'<div class="items">', close:'</div>', items, sel:'.items>*', min:1};
 }
 /* ha a stageplot kicsit kisebbre véve az inputlista még az első oldalra fér, úgy építjük fel */
-function buildPrint() {
-  if (buildPrintK(1)) return;
-  for (const f of [0.92, 0.85]) if (buildPrintK(f)) return;
-  buildPrintK(1);
+function buildPrint(dry) {
+  dry = dry === true;
+  if (buildPrintK(1, dry)) return;
+  for (const f of [0.92, 0.85]) if (buildPrintK(f, dry)) return;
+  buildPrintK(1, dry);
 }
-function buildPrintK(kf) {
+/* próba-összerakás (a stageplot helyén üres, ugyanakkora hely): melyik szekció melyik oldalra kerül */
+function printPages() {
+  buildPrint(true);
+  const m = {};
+  (buildPrintK.info || []).forEach(x => { if (x.pages.length) m[x.head] = [Math.min(...x.pages), Math.max(...x.pages)]; });
+  return m;
+}
+function buildPrintK(kf, dry) {
   computeChannels();
   const bw = !!($('#dlgXbw') && $('#dlgXbw').checked);
   $('#printRoot').classList.toggle('bw', bw);
   const prev = view;
-  if (view !== 'stage') { view = 'stage'; renderAll(); }
+  if (!dry && view !== 'stage') { view = 'stage'; renderAll(); }
   const headMM = S.logo ? 23 : 9, bodyMM = 264 - headMM;
   const pw = mmpx(170), bodyH = mmpx(bodyMM) - 8;
   const H = stageH(), k = Math.min((pw - 4) / STAGE_W, (bodyH * 0.85) / H) * kf;
-  const st = $('#stage').cloneNode(true);
-  st.className = mirrored() ? 'flip' : '';
-  st.style.cssText = 'position:absolute;left:0;top:0;width:' + STAGE_W + 'px;height:' + H + 'px;transform:scale(' + k + ');transform-origin:0 0';
-  $$('.rz', st).forEach(e => e.remove());
-  $$('.block', st).forEach(e => e.classList.remove('sel', 'done'));
-  const stItem = '<div><div class="pst" style="width:' + Math.ceil(STAGE_W * k) + 'px;height:' + Math.ceil(H * k) + 'px">' + st.outerHTML + '</div>' +
+  let stHTML = '';
+  if (!dry) {
+    const st = $('#stage').cloneNode(true);
+    st.className = mirrored() ? 'flip' : '';
+    st.style.cssText = 'position:absolute;left:0;top:0;width:' + STAGE_W + 'px;height:' + H + 'px;transform:scale(' + k + ');transform-origin:0 0';
+    $$('.rz', st).forEach(e => e.remove());
+    $$('.block', st).forEach(e => e.classList.remove('sel', 'done'));
+    stHTML = st.outerHTML;
+  }
+  const stItem = '<div><div class="pst" style="width:' + Math.ceil(STAGE_W * k) + 'px;height:' + Math.ceil(H * k) + 'px">' + stHTML + '</div>' +
     (bw ? '<div class="legend"><span class="lgl"></span>saját &nbsp;&nbsp;&nbsp; <span class="lgl d"></span>helyi</div></div>' : '<div class="legend"><span style="color:var(--own)">■</span> kék: saját eszköz &nbsp; <span style="color:var(--venue)">■</span> piros: helyi eszköz</div></div>');
-  if (prev !== 'stage') { view = prev; renderAll(); }
+  if (!dry && prev !== 'stage') { view = prev; renderAll(); }
   const title = riderTitle(), date = fmtDay(S.date) || fmtDay(todayStr());
   const secs = [];
   const cs = S.contacts.filter(c => filled(c.name) || filled(c.phone) || filled(c.email));
@@ -2543,6 +2563,7 @@ function buildPrintK(kf) {
       }
       let used = 0;
       for (let q = 0; q < c; q++) used += sec.hs[i + q];
+      (sec.pg = sec.pg || []).push(pages.length);
       pages[pages.length - 1].push('<div class="psec"><div class="sh">' + sec.head + (i > 0 ? ' (folytatás)' : '') + '</div>' + sec.open + sec.items.slice(i, i + c).join('') + sec.close + '</div>');
       rem -= sec.headH + sec.over + used;
       i += c;
@@ -2553,6 +2574,7 @@ function buildPrintK(kf) {
   const logo = S.logo ? '<div class="rlogow"><img class="rlogo" src="' + S.logo + '" alt=""></div>' : '';
   root.innerHTML = pages.map((pg, idx) => '<div class="rpage">' + logo + '<div class="rhead"><span>' + esc2(date) + '</span><b>' + esc2(title) + '</b><span>' + (idx + 1) + ' / ' + N + '</span></div><div class="rbody" style="height:' + bodyMM + 'mm">' + pg.join('') + '</div></div>').join('');
   root.classList.remove('measuring');
+  buildPrintK.info = secs.map(x => ({head:x.head, pages:x.pg || []}));
   const hasIn = secs.some(x => x.head === 'Input lista');
   return !hasIn || pages[0].some(h => h.indexOf('<div class="sh">Input lista</div>') >= 0);
 }
@@ -3093,8 +3115,8 @@ function bindUI() {
     if (v === '__empty') { renderVerSel(); newEmptyVersion(S.gid, S.band, S.name); return; }
     if (openProject(v)) { renderAll(); toast('Megnyitva: ' + S.name); }
   });
-  $('#sw').addEventListener('input', e => { S.stage.w = parseFloat(e.target.value) || 8; if (view === 'stage') renderStage(); });
-  $('#sd').addEventListener('input', e => { S.stage.d = parseFloat(e.target.value) || 6; if (view === 'stage') renderStage(); });
+  $('#sw').addEventListener('input', e => { S.stage.w = parseFloat(e.target.value) || 6; if (view === 'stage') renderStage(); });
+  $('#sd').addEventListener('input', e => { S.stage.d = parseFloat(e.target.value) || 4; if (view === 'stage') renderStage(); });
   $('#sw').addEventListener('change', commit);
   $('#sd').addEventListener('change', commit);
   $('#showSize').addEventListener('change', e => { S.showSize = e.target.checked; commit(); if (view === 'stage') renderStage(); });

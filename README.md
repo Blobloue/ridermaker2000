@@ -51,6 +51,8 @@ Egyszer megnyitva a program **net nélkül is működik**, netre kapcsolva pedig
   - **Manuális:** a név mellett külön Info oszlop.
   - **Auto:** minden egy cellában a név után. Mikrofon: a konkrét típus (pl. SM58), ha nincs megadva, csak „mikrofon”. DI: „aktív DI” vagy „passzív DI”, ha nincs kiválasztva, csak „DI” (megadott típusnál zárójelben mellette). Utána az állvány (kis/nagy), az RF és a megjegyzés, ha ki van töltve.
   - Ha így nem fér el, az előnézet jelzi: kevesebb hasáb lesz, vagy ha egy hasábba sem fér ki egy sorban, kiírja, melyik sor(ok) miatt. Ezek a sorok a listán színes csíkot kapnak a szám előtt.
+  - Az előnézet azt is jelzi, ha az input vagy az output lista a PDF-ben a következő oldalra kerül vagy átlóg (a PDF-ben a folytatás „Input lista (folytatás)” címet kap).
+  - Új projekt alapból **Auto** módban indul. A meglévő projektek megtartják a saját beállításukat.
 
 ### Kérések
 
