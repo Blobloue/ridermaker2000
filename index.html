@@ -695,6 +695,15 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 #printRoot .cg{gap:0 12px}
 .pdfn{font-size:12px;font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;margin-left:10px}
 .pdfn.warn{color:var(--accent)}
+.pdfrow{display:flex;align-items:center;gap:10px;padding-top:8px;border-top:1px solid var(--line)}
+.pdfrow .cl{font-size:12px;color:var(--muted);flex:none}
+.sgm{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel2)}
+.sgm label{position:relative;display:flex;align-items:center;justify-content:center;height:32px;padding:0 18px;cursor:pointer;font-size:14px;white-space:nowrap}
+.sgm label+label{border-left:1px solid var(--line)}
+.sgm label.on{background:#2f6b49;color:#fff;font-weight:600}
+.sgm input{position:absolute;opacity:0;pointer-events:none;inset:0}
+@media (max-width:640px){.pdfrow{display:grid;grid-template-columns:1fr}.sgm{width:100%}.sgm label{flex:1}}
+tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 /* DI-Box: egy keret, a DI felirat vastagabb */
 .tag.dbox{border:1.5px solid currentColor;font-weight:600}
 .tag.dbox .dil{font-weight:900;letter-spacing:.02em}
@@ -706,7 +715,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <header id="top">
   <button id="menuL" class="btn ico only-small" aria-label="Menü">☰</button>
   <button id="homeBtn" class="btn ico" title="Projektek" aria-label="Projektek"><svg viewBox="0 0 16 16" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.8 6.3V13.5h3V10h2.4v3.5h3V6.3"/></svg></button>
-  <b class="brand">RiderMaker2000 <small id="verLbl">v1.65</small></b>
+  <b class="brand">RiderMaker2000 <small id="verLbl">v1.67</small></b>
   <input id="bandName" type="text" placeholder="Zenekar neve">
   <span id="verBox"><input id="verName" type="text" placeholder="Verzió neve" title="Verzió neve"><select id="verSel" title="Verziók"></select></span>
   <select id="tabSel" title="Nézet"><option value="stage">Stageplot</option><option value="ch">Csatornalista</option><option value="req">Kérések</option><option value="con">Kontaktok</option></select>
@@ -726,7 +735,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <div id="scrim"></div>
 <div id="toast"></div>
 <div id="dlg"><div class="dbox"><b id="dlgT">Új projekt</b><input type="text" id="dlgI" placeholder="Zenekar / projekt neve"><div class="line"><button class="btn pri" id="dlgOk">Létrehozás</button><button class="btn" id="dlgNo">Mégse</button></div></div></div>
-<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.65</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
+<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.67</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
 <p>Technikai rider egy helyen: stageplot, csatornalista, kérések és kontaktok, a végén egy tiszta, kinyomtatható PDF.</p>
 <h2>1. Hol vannak az adataid?</h2>
 <p><b>Minden automatikusan mentődik, a böngészőbe, ezen az eszközön.</b> Nincs fiók, nincs szerver, a ridereidet senki más nem látja, a GitHubra csak maga a program kerül fel.</p>
@@ -769,7 +778,7 @@ body.tabsdd .brand small{font-size:12px;margin:0;display:inline!important}
 <li><b>Kézi csatornalista</b> (☰ menü): a lista leválik a stageplotról, szabadon írod és törlöd, semmi nem tolódik. Visszakapcsolva a meglévő sorok kézi sorok maradnak, csak az új stageplot elemek kapnak csatornát.</li>
 <li><b>Kézi sorok</b> (szürke csoport): csak a listán élnek, a stageploton nem. Blokk törlésekor a program megkérdezi, megtartsa-e a csatornáit kézi sorként.</li>
 <li>Oszlopok ki-be kapcsolhatók, a zöld mező = kitöltve.</li>
-<li>A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). Az <b>Okos sor</b> kapcsolóval az infó egy összegző sorban jelenik meg, típus nélkül. Ha nem fér el, kevesebb hasáb lesz.</li>
+<li>A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). A <b>PDF info</b> kapcsolóval (Manuális / Auto) választod meg, hogyan kerül az infó a PDF-be. Auto: egy cellában a név után (pl. „SM58”, „aktív DI”, „mikrofon”, állvány, RF, megjegyzés). A szerkesztő oszlopai nem változnak. Ha nem fér el, az előnézet jelzi (kevesebb hasáb, vagy melyik sor nem fér ki), és a sor mellett jelölés látszik.</li>
 </ul>
 <h3>Kérések</h3>
 <ul>
@@ -1626,6 +1635,8 @@ function chTable(type) {
   const minW = 78 + 76 + keys.reduce((a, k) => a + (COL_PX[k] || 0), 0) + flex * 130;
   const span = keys.length + 2;
   const {rows, gs} = chGroups(type);
+  const wide = new Set(), Lw = chLayout(type);
+  if (Lw) Lw.tight.concat(Lw.cut).forEach(x => wide.add(x.r.id));
   let h = '<div class="tw"><table class="ct" data-type="' + type + '" style="min-width:' + minW + 'px"><colgroup><col style="width:78px">' +
     keys.map(k => '<col' + (COL_PX[k] ? ' style="width:' + COL_PX[k] + 'px"' : '') + '>').join('') + '<col style="width:76px"></colgroup>' +
     '<thead><tr><th>' + (type === 'in' ? 'IN' : 'OUT') + '</th>' + keys.map(k => '<th>' + COL_HEAD(k, type) + '</th>').join('') + '<th></th></tr></thead><tbody>';
@@ -1634,7 +1645,7 @@ function chTable(type) {
       '<button class="btn sm add" data-act="rowadd" data-bid="' + g.b.id + '" data-type="' + type + '">+ sor</button></span></span></td></tr>';
     g.rows.forEach(x => {
       const r = x.r, fix = r.chStart > 0 && !x.b.hidden;
-      h += '<tr class="' + (r.gap ? 'gap' : '') + '' + '" data-rid="' + r.id + '"><td class="chc"><input type="text" inputmode="numeric" class="chn' + (fix && !S.manual ? ' fix' : '') + '" data-ch="' + r.id + '" value="' + x.ch[0] + '">' + (fix && !S.manual ? '<button class="pinb" data-act="unpin" data-rid="' + r.id + '" title="Fix kezdőszám. Koppints rá, hogy újra automatikus legyen.">📌</button>' : '') + (!x.b.hidden ? '<span class="lnk" title="A stageplothoz kötött sor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 9.5l3-3"/><path d="M7 4.8l1.2-1.2a2.6 2.6 0 0 1 3.7 3.7L10.7 8.5"/><path d="M9 11.2l-1.2 1.2a2.6 2.6 0 0 1-3.7-3.7L5.3 7.5"/></svg></span>' : '') + '</td>' +
+      h += '<tr class="' + (r.gap ? 'gap' : '') + (wide.has(r.id) ? ' pdfwide' : '') + '" data-rid="' + r.id + '"><td class="chc"><input type="text" inputmode="numeric" class="chn' + (fix && !S.manual ? ' fix' : '') + '" data-ch="' + r.id + '" value="' + x.ch[0] + '">' + (fix && !S.manual ? '<button class="pinb" data-act="unpin" data-rid="' + r.id + '" title="Fix kezdőszám. Koppints rá, hogy újra automatikus legyen.">📌</button>' : '') + (!x.b.hidden ? '<span class="lnk" title="A stageplothoz kötött sor"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 9.5l3-3"/><path d="M7 4.8l1.2-1.2a2.6 2.6 0 0 1 3.7 3.7L10.7 8.5"/><path d="M9 11.2l-1.2 1.2a2.6 2.6 0 0 1-3.7-3.7L5.3 7.5"/></svg></span>' : '') + '</td>' +
         keys.map(k => '<td>' + chCell(type, k, x) + '</td>').join('') +
         '<td class="ctl"><span class="dh" data-drag="' + r.id + '" title="Húzd a sor mozgatásához">⠿</span>' +
         '<button class="btn sm ico tiny danger" data-act="ldel" data-rid="' + r.id + '" title="Sor törlése">✕</button></td></tr>';
@@ -1653,12 +1664,19 @@ function renderChannels() {
     (S.manual ? '<span class="manb" title="A ☰ menüben kapcsolható">Kézi mód</span>' : '') +
     '<div class="colchips"><span class="cl">Oszlopok:</span>' +
     Object.keys(COL_FULL).map(k => '<label class="cchip' + (colOn(k) ? ' on' : '') + '"><input type="checkbox" data-col="' + k + '"' + (colOn(k) ? ' checked' : '') + '><span class="lsl">' + COL_FULL[k] + '</span><span class="lsh">' + COL_SHORT[k] + '</span></label>').join('') + '</div>' +
-    '<label class="cchip' + (S.smart ? ' on' : '') + '" title="Az infó egy összegző sorban, típus nélkül"><input type="checkbox" data-smart="1"' + (S.smart ? ' checked' : '') + '><span>Okos sor (PDF)</span></label>' +
-    '<details class="pp"><summary class="qm">?</summary><div class="ppb"><p class="hint">' + (S.manual ? 'Kézi mód: a csatornalista független a stageplottól. Számot szabadon átírhatsz, a többi nem tolódik. Húzáskor a számok a helyükön maradnak, a tartalom mozog. ' : '') + 'A 🔗 jelű sorok a stageplothoz kötöttek. A számok a sorrendből jönnek. A sorokat a ⠿ fogantyúval húzhatod, ez csak a sorrendet változtatja, a stageplotot nem. Ha átírsz egy számot, onnan folytatódik a számozás, és 📌 jelzi a fix kezdőszámot. A 📌-re koppintva (vagy a szám törlésével) újra automatikus lesz. Zöld mező = kitöltve, szürke dőlt = automatikus érték. A „Kézi sorok” csak a listán vannak, a stageploton nem.</p></div></details></div></div>';
+    '<details class="pp"><summary class="qm">?</summary><div class="ppb"><p class="hint">' + (S.manual ? 'Kézi mód: a csatornalista független a stageplottól. Számot szabadon átírhatsz, a többi nem tolódik. Húzáskor a számok a helyükön maradnak, a tartalom mozog. ' : '') + 'A 🔗 jelű sorok a stageplothoz kötöttek. A számok a sorrendből jönnek. A sorokat a ⠿ fogantyúval húzhatod, ez csak a sorrendet változtatja, a stageplotot nem. Ha átírsz egy számot, onnan folytatódik a számozás, és 📌 jelzi a fix kezdőszámot. A 📌-re koppintva (vagy a szám törlésével) újra automatikus lesz. Zöld mező = kitöltve, szürke dőlt = automatikus érték. A „Kézi sorok” csak a listán vannak, a stageploton nem.</p></div></details></div>' +
+    '<div class="pdfrow"><span class="cl">PDF info:</span><span class="sgm" title="Hogyan kerül az infó a PDF csatornalistájába. A szerkesztő oszlopai nem változnak.">' +
+    '<label class="' + (!S.smart ? 'on' : '') + '"><input type="radio" name="smartm" data-smart="1" value="0"' + (!S.smart ? ' checked' : '') + '><span>Manuális</span></label>' +
+    '<label class="' + (S.smart ? 'on' : '') + '"><input type="radio" name="smartm" data-smart="1" value="1"' + (S.smart ? ' checked' : '') + '><span>Auto</span></label></span></div></div>';
   const pdfNote = t => {
     const Lo = chLayout(t);
     if (!Lo) return '';
-    return '<span class="pdfn' + (Lo.short ? ' warn' : '') + '" title="Így kerül a PDF-be">PDF: ' + Lo.cols + ' hasáb' + (Lo.smart ? ' · okos sor' : '') + ' · ' + Lo.n + ' sor' + (Lo.short ? ' (kevesebb hasáb, mert nem fér el)' : '') + '</span>';
+    const nums = a => a.slice(0, 5).map(x => x.ch[0] + '.').join(', ') + (a.length > 5 ? ' …' : '');
+    let w = '';
+    if (Lo.cut.length) w = ' · nem fér ki egy sorban: ' + nums(Lo.cut) + ' sor';
+    else if (Lo.short) w = ' (kevesebb hasáb, mert nem fér el' + (Lo.tight.length ? ': ' + nums(Lo.tight) + ' sor' : '') + ')';
+    const bad = Lo.cut.length || Lo.short;
+    return '<span class="pdfn' + (bad ? ' warn' : '') + '" title="Így kerül a PDF-be">PDF: ' + Lo.cols + ' hasáb' + (Lo.smart ? ' · auto' : '') + ' · ' + Lo.n + ' sor' + w + '</span>';
   };
   h += '<h2>Input ' + pdfNote('in') + '</h2>' + chTable('in') + '<h2>Output ' + pdfNote('out') + '</h2>' + chTable('out');
   $('#chPane').innerHTML = h;
@@ -2346,7 +2364,7 @@ function chLayout(type) {
   const rows = chRows(type).filter(x => !x.r.gap);
   if (!rows.length) return null;
   const on = k => colOn(k);
-  const info = x => {
+  const infoM = x => {
     const r = x.r, a = [];
     if (type === 'in') {
       /* csak a konkrét eszköz és a jelölés; a típusszó (mikrofon, DI) nem foglal helyet, ha nincs kitöltve */
@@ -2364,6 +2382,25 @@ function chLayout(type) {
     if (on('note') && filled(r.note)) a.push(r.note);
     return a.filter(filled).join(' · ');
   };
+  /* Auto: minden info egy cellában a név után. Mikrofon: a konkrét típus, ha nincs, akkor „mikrofon”.
+     DI: „aktív DI” / „passzív DI”, ha nincs megadva, csak „DI”. Mellé RF és megjegyzés. */
+  const infoA = x => {
+    const r = x.r, a = [];
+    if (type === 'in') {
+      if (r.kind === 'mic') {
+        if (on('model') && filled(r.model)) a.push(r.model.trim());
+        else if (on('kind')) a.push('mikrofon');
+      } else if (r.kind === 'di') {
+        const d = on('model') ? ({active:'aktív ', passive:'passzív ', both:'aktív/passzív '}[r.dbox] || '') : '';
+        a.push(d + 'DI' + (on('model') && filled(r.model) ? ' (' + r.model.trim() + ')' : ''));
+      } else if (r.kind && on('kind')) a.push(IN_OPT[r.kind] || '');
+      if (on('stand') && r.kind === 'mic' && r.stand) a.push(r.stand === 'S' ? 'kis állvány' : 'nagy állvány');
+      if (on('rf') && r.rf) a.push('RF');
+    } else if (r.kind === 'iem' && r.rf) a.push('RF');
+    if (on('note') && filled(r.note)) a.push(r.note);
+    return a.filter(filled).join(' · ');
+  };
+  const info = S.smart ? infoA : infoM;
   const src = x => {
     const r = x.r;
     if (type === 'out') {
@@ -2389,7 +2426,13 @@ function chLayout(type) {
   while (cols > 1 && need > (pw - CH_GAP * (cols - 1)) / cols) cols--;
   const colW = (pw - CH_GAP * (cols - 1)) / cols;
   const srcW = hasInfo ? Math.max(maxS, colW - CH_NW - maxI) : 0;
-  return {rows, info, src, cell, smart, hasInfo, cols, want, colW, nW: CH_NW, srcW, n, short: cols < want};
+  /* melyik sor miatt nem fér el: tight = emiatt kevesebb hasáb, cut = a végső hasábba sem fér ki egy sorban */
+  const eff = x => smart ? CH_NW + tw(cell(x)) : CH_NW + maxS + (hasInfo ? tw(info(x)) : 0);
+  const lim = (pw - CH_GAP * (want - 1)) / want;
+  const mx = Math.max(...rows.map(eff));
+  const tight = want > 1 && mx > lim ? rows.filter(x => eff(x) >= mx - 8) : [];
+  const cut = rows.filter(x => eff(x) > colW + 0.5);
+  return {rows, info, src, cell, smart, hasInfo, cols, want, colW, nW: CH_NW, srcW, n, short: cols < want, tight, cut};
 }
 function chSection(type) {
   const Lo = chLayout(type);
@@ -2801,7 +2844,7 @@ function onChange(e) {
   if (t.dataset.fs) { const v = parseInt(t.value, 10); if (v > 0) { setFsAll(() => v); commit(); renderAll(); } return; }
   if (t.dataset.mch) { const f = findRow(t.dataset.mch); if (f) { const v = parseInt(t.value, 10); if (v > 0) f.r.chStart = v; else delete f.r.chStart; commit(); renderAll(); } return; }
   if (t.dataset.col) { S.cols[t.dataset.col] = t.checked; commit(); renderChannels(); return; }
-  if (t.dataset.smart) { S.smart = t.checked; commit(); renderChannels(); return; }
+  if (t.dataset.smart) { S.smart = t.value === '1'; commit(); renderChannels(); return; }
   if (!t.dataset.f) return;
   if (t.type === 'text' || t.type === 'number') { commit(); renderStagePartial(t); return; }
   setField(t);

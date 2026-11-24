@@ -47,7 +47,10 @@ Egyszer megnyitva a program **net nélkül is működik**, netre kapcsolva pedig
 - **Kézi csatornalista** (☰ menü): a lista leválik a stageplotról, szabadon írod és törlöd, semmi nem tolódik. Visszakapcsolva a meglévő sorok kézi sorok maradnak, csak az új stageplot elemek kapnak csatornát.
 - **Kézi sorok** (szürke csoport): csak a listán élnek, a stageploton nem. Blokk törlésekor a program megkérdezi, megtartsa-e a csatornáit kézi sorként.
 - Oszlopok ki-be kapcsolhatók, a zöld mező = kitöltve.
-- A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). Az **Okos sor** kapcsolóval az infó egy összegző sorban jelenik meg, típus nélkül. Ha nem fér el, kevesebb hasáb lesz.
+- A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). A **PDF info** kapcsolóval (Manuális / Auto) választod meg, hogyan kerül az infó a PDF-be. A szerkesztő oszlopai mindkét állásban ugyanazok maradnak.
+  - **Manuális:** a név mellett külön Info oszlop.
+  - **Auto:** minden egy cellában a név után. Mikrofon: a konkrét típus (pl. SM58), ha nincs megadva, csak „mikrofon”. DI: „aktív DI” vagy „passzív DI”, ha nincs kiválasztva, csak „DI” (megadott típusnál zárójelben mellette). Utána az állvány (kis/nagy), az RF és a megjegyzés, ha ki van töltve.
+  - Ha így nem fér el, az előnézet jelzi: kevesebb hasáb lesz, vagy ha egy hasábba sem fér ki egy sorban, kiírja, melyik sor(ok) miatt. Ezek a sorok a listán színes csíkot kapnak a szám előtt.
 
 ### Kérések
 
