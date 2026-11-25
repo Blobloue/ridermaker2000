@@ -383,6 +383,8 @@ textarea.grow{min-height:36px;resize:none;overflow:hidden}
   html,body{height:auto!important;overflow:visible!important;background:#fff!important;display:block!important}
   body>*:not(#printRoot){display:none!important}
   #printRoot{display:block}
+  #printRoot .cg,#printRoot table.cht,#printRoot table.cht tr{break-inside:avoid;page-break-inside:avoid}
+  #printRoot .sh{break-after:avoid;page-break-after:avoid}
 }
 .ct input[type=text],.ct input[type=number],.ct select{height:32px;font-size:15px;padding:0 6px}
 .ct td{padding:4px 4px}
@@ -717,7 +719,7 @@ tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 <header id="top">
   <button id="menuL" class="btn ico only-small" aria-label="Menü">☰</button>
   <button id="homeBtn" class="btn ico" title="Projektek" aria-label="Projektek"><svg viewBox="0 0 16 16" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 7.5 8 2.5l6 5"/><path d="M3.8 6.3V13.5h3V10h2.4v3.5h3V6.3"/></svg></button>
-  <b class="brand">RiderMaker2000 <small id="verLbl">v1.68</small></b>
+  <b class="brand">RiderMaker2000 <small id="verLbl">v1.70</small></b>
   <input id="bandName" type="text" placeholder="Zenekar neve">
   <span id="verBox"><input id="verName" type="text" placeholder="Verzió neve" title="Verzió neve"><select id="verSel" title="Verziók"></select></span>
   <select id="tabSel" title="Nézet"><option value="stage">Stageplot</option><option value="ch">Csatornalista</option><option value="req">Kérések</option><option value="con">Kontaktok</option></select>
@@ -737,7 +739,7 @@ tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 <div id="scrim"></div>
 <div id="toast"></div>
 <div id="dlg"><div class="dbox"><b id="dlgT">Új projekt</b><input type="text" id="dlgI" placeholder="Zenekar / projekt neve"><div class="line"><button class="btn pri" id="dlgOk">Létrehozás</button><button class="btn" id="dlgNo">Mégse</button></div></div></div>
-<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.68</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
+<div id="dlgH"><div class="hbox"><div class="hhead"><b>Leírás</b><span class="hint2">RiderMaker2000 v1.70</span><button class="btn" id="dlgHX">Bezárás</button></div><div class="hbody"><h1>RiderMaker2000</h1>
 <p>Technikai rider egy helyen: stageplot, csatornalista, kérések és kontaktok, a végén egy tiszta, kinyomtatható PDF.</p>
 <h2>1. Hol vannak az adataid?</h2>
 <p><b>Minden automatikusan mentődik, a böngészőbe, ezen az eszközön.</b> Nincs fiók, nincs szerver, a ridereidet senki más nem látja, a GitHubra csak maga a program kerül fel.</p>
@@ -780,7 +782,7 @@ tr.pdfwide>td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 <li><b>Kézi csatornalista</b> (☰ menü): a lista leválik a stageplotról, szabadon írod és törlöd, semmi nem tolódik. Visszakapcsolva a meglévő sorok kézi sorok maradnak, csak az új stageplot elemek kapnak csatornát.</li>
 <li><b>Kézi sorok</b> (szürke csoport): csak a listán élnek, a stageploton nem. Blokk törlésekor a program megkérdezi, megtartsa-e a csatornáit kézi sorként.</li>
 <li>Oszlopok ki-be kapcsolhatók, a zöld mező = kitöltve.</li>
-<li>A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). A <b>PDF info</b> kapcsolóval (Manuális / Auto) választod meg, hogyan kerül az infó a PDF-be. Auto: egy cellában a név után (pl. „SM58”, „aktív DI”, „mikrofon”, állvány, RF, megjegyzés). A szerkesztő oszlopai nem változnak. Ha nem fér el, az előnézet jelzi (kevesebb hasáb, vagy melyik sor nem fér ki), és a sor mellett jelölés látszik. Azt is jelzi, ha az input vagy az output lista a PDF-ben a következő oldalra kerül vagy átlóg. Új projekt alapból Auto módban indul, a színpad alapmérete 6 × 4 m.</li>
+<li>A lista fölött látod, hogyan kerül a PDF-be (pl. „3 hasáb · 24 sor”). A <b>PDF info</b> kapcsolóval (Manuális / Auto) választod meg, hogyan kerül az infó a PDF-be. Auto: egy cellában a név után (pl. „SM58”, „aktív DI”, „mikrofon”, állvány, RF, megjegyzés). A szerkesztő oszlopai nem változnak. Ha nem fér el, az előnézet jelzi (kevesebb hasáb, vagy melyik sor nem fér ki), és a sor mellett jelölés látszik. Azt is jelzi, ha az input vagy az output lista a PDF-ben a következő oldalra kerül vagy átlóg. Új projekt alapból Auto módban indul, a színpad alapmérete 6 × 4 m.</li><li><b>Hasábok a PDF-ben:</b> 1–10 sor egy hasáb, 11–20 két hasáb, 21–30 három hasáb (ha a szöveg nem fér, kevesebb). Alap 8 sor hasábonként. Ha egyenlően kijön, egyenlő hasábok (pl. 12 → 6/6, 21 → 7/7/7). Kicsit kevesebbnél a bal hasábok teltek, a jobb szélső a maradék (22 → 8/8/6). Többnél a többlet jobbról balra töltődik, hasábonként legfeljebb +2 sorral (26 → 8/8/10). Ennél hosszabb lista 8 soros sávokban folytatódik, a maradék alul, ha elfér az oldalon, különben a következő oldalon.</li>
 </ul>
 <h3>Kérések</h3>
 <ul>
@@ -1638,7 +1640,7 @@ function chTable(type) {
   const span = keys.length + 2;
   const {rows, gs} = chGroups(type);
   const wide = new Set(), Lw = chLayout(type);
-  if (Lw) Lw.tight.concat(Lw.cut).forEach(x => wide.add(x.r.id));
+  if (Lw) (Lw.tight.length <= 5 ? Lw.tight : []).concat(Lw.cut).forEach(x => wide.add(x.r.id));
   let h = '<div class="tw"><table class="ct" data-type="' + type + '" style="min-width:' + minW + 'px"><colgroup><col style="width:78px">' +
     keys.map(k => '<col' + (COL_PX[k] ? ' style="width:' + COL_PX[k] + 'px"' : '') + '>').join('') + '<col style="width:76px"></colgroup>' +
     '<thead><tr><th>' + (type === 'in' ? 'IN' : 'OUT') + '</th>' + keys.map(k => '<th>' + COL_HEAD(k, type) + '</th>').join('') + '<th></th></tr></thead><tbody>';
@@ -1678,7 +1680,7 @@ function renderChannels() {
     const nums = a => a.slice(0, 5).map(x => x.ch[0] + '.').join(', ') + (a.length > 5 ? ' …' : '');
     let w = '';
     if (Lo.cut.length) w = ' · nem fér ki egy sorban: ' + nums(Lo.cut) + ' sor';
-    else if (Lo.short) w = ' (kevesebb hasáb, mert nem fér el' + (Lo.tight.length ? ': ' + nums(Lo.tight) + ' sor' : '') + ')';
+    else if (Lo.short) w = ' (kevesebb hasáb, mert nem fér el' + (Lo.tight.length && Lo.tight.length <= 5 ? ': ' + nums(Lo.tight) + ' sor' : Lo.tight.length ? ', a sorok szövege hosszú' : '') + ')';
     const pg = PP[t === 'in' ? 'Input lista' : 'Output lista'];
     let pw2 = '';
     if (pg && pg[1] > 1) pw2 = pg[0] === pg[1] ? ' · ' + pg[0] + '. oldalra kerül' : ' · átlóg a következő oldalra (' + pg[0] + '–' + pg[1] + '. oldal)';
@@ -2367,7 +2369,7 @@ const CHUNK_W = {src:120, kind:78, model:100, stand:44, rf:30, note:120};
 /* a PDF csatornalista elrendezése (a PDF és a szerkesztő előnézete ugyanezt használja)
    szabály: 8 sor = 1 hasáb, 16 = 2, 24-től 3; ha a szöveg nem fér el, kevesebb hasáb.
    egy sor mindig egy sor, nincs törés. Okos sor: az info egy összegző cellában. */
-const PDF_CH_FS = 13.5, CH_GAP = 12, CH_NW = 36, CH_PER = 8, CH_MAXC = 3;
+const PDF_CH_FS = 13.5, CH_GAP = 12, CH_NW = 36, CH_PER = 8, CH_CAP = 10, CH_MAXC = 3;
 function chLayout(type) {
   const rows = chRows(type).filter(x => !x.r.gap);
   if (!rows.length) return null;
@@ -2429,7 +2431,7 @@ function chLayout(type) {
   const maxC = smart ? Math.max(...rows.map(x => tw(cell(x)))) : 0;
   const need = CH_NW + (smart ? maxC : maxS + maxI);
   /* hasábszám: a sorszámtól, de csak annyi, amennyi elfér */
-  const want = Math.min(CH_MAXC, Math.ceil(n / CH_PER));
+  const want = Math.min(CH_MAXC, Math.ceil(n / CH_CAP));
   let cols = want;
   while (cols > 1 && need > (pw - CH_GAP * (cols - 1)) / cols) cols--;
   const colW = (pw - CH_GAP * (cols - 1)) / cols;
@@ -2453,14 +2455,44 @@ function chSection(type) {
   const colg = '<colgroup><col style="width:' + nW + 'px">' + (hasInfo ? '<col style="width:' + Math.round(srcW) + 'px"><col>' : '<col>') + '</colgroup>';
   const tbl = rs => rs.length ? '<table class="cht">' + colg + '<tbody>' + rs.map(rowH).join('') + '</tbody></table>' : '<div></div>';
   const head = type === 'in' ? 'Input lista' : 'Output lista';
-  /* elemenként legfeljebb 8 × hasáb sor (24 sor 3 hasábon), oszloponként egyenletesen */
-  const per = CH_PER * cols, items = [];
-  for (let i = 0; i < n; i += per) {
-    const ch = rows.slice(i, i + per), pc = Math.ceil(ch.length / cols), parts = [];
-    for (let j = 0; j < cols; j++) parts.push(tbl(ch.slice(j * pc, (j + 1) * pc)));
-    items.push('<div class="cg" style="grid-template-columns:repeat(' + cols + ',minmax(0,1fr))">' + parts.join('') + '</div>');
-  }
-  return {head, open:'<div class="items">', close:'</div>', items, sel:'.items>*', min:1};
+  /* Felosztás hasábokra (sor/hasáb):
+     - alap 8 sor hasábonként; ha egyenlően kijön (n osztható a hasábszámmal), egyenlő hasábok (6/6, 7/7/7, 10/10/10)
+     - kicsit kevesebb: a bal hasábok teltek (8), a maradék a jobb szélsőben (22 -> 8/8/6)
+     - több mint 8×hasáb: a többlet jobbról balra, hasábonként legfeljebb +2 sor, 10-ig (25 -> 8/8/9, 28 -> 8/10/10)
+     - 10×hasáb fölött 8×hasáb soros sávok, a maradék alul, kiegyenlítve; ami nem fér az oldalra, a következőn folytatódik. */
+  const dist = (m, c) => {
+    if (c <= 1) return [m];
+    if (m % c === 0) return Array(c).fill(m / c);
+    if (m <= 8 * c) { const a = []; let left = m; for (let j = 0; j < c; j++) { const t = Math.min(8, left); if (t > 0) a.push(t); left -= t; } return a; }
+    const a = Array(c).fill(8); let extra = m - 8 * c;
+    for (let j = c - 1; j >= 0 && extra > 0; j--) { const t = Math.min(2, extra); a[j] += t; extra -= t; }
+    return a;
+  };
+  const tail = m => {
+    const c = Math.min(cols, Math.max(1, Math.floor(m / 2)));
+    if (c <= 1) return [m];
+    if (m % c === 0) return Array(c).fill(m / c);
+    const sf = 8 * c - m;
+    if (sf > 0 && sf <= 2) return dist(m, c);
+    const bs = Math.floor(m / c), r = m % c;
+    return Array.from({length:c}, (_, j) => bs + (j < r ? 1 : 0));
+  };
+  const stripes = lim => {
+    const out = []; let m = n;
+    while (m > lim) { out.push(Array(cols).fill(CH_PER)); m -= CH_PER * cols; }
+    out.push(out.length ? tail(m) : dist(m, cols));
+    return out;
+  };
+  const build = arr => { let q = 0; return arr.map(sz => {
+    const len = sz.reduce((x, y) => x + y, 0), list = rows.slice(q, q + len); q += len;
+    let o = 0; const ps = sz.map(z => { const t = tbl(list.slice(o, o + z)); o += z; return t; });
+    while (ps.length < cols) ps.push('<div></div>');
+    return '<div class="cg" style="grid-template-columns:repeat(' + cols + ',minmax(0,1fr))">' + ps.join('') + '</div>';
+  }); };
+  const primary = n > CH_CAP * cols ? build(stripes(CH_CAP * cols)) : build([dist(n, cols)]);
+  /* ha az oldalon a magasabb (10 soros) hasábok nem férnek el, 8 soros sávokra bontjuk */
+  const fb = n > CH_PER * cols && n <= CH_CAP * cols ? build(stripes(CH_PER * cols)) : null;
+  return {head, open:'<div class="items">', close:'</div>', items:primary, alts:fb ? [fb] : null, splitAlt:!!fb, sel:'.items>*', min:1};
 }
 /* ha a stageplot kicsit kisebbre véve az inputlista még az első oldalra fér, úgy építjük fel */
 function buildPrint(dry) {
@@ -2544,7 +2576,7 @@ function buildPrintK(kf, dry) {
   const newPage = () => { pages.push([]); rem = bodyH; };
   secs.forEach(sec => {
     /* ha egészben nem fér ki az oldalra, de egy másik elrendezésben (pl. több, rövidebb oszlop) igen, azt választjuk */
-    if (sec.altM && sec.tot > rem) { const a = sec.altM.find(x => x.tot <= rem); if (a) Object.assign(sec, a); }
+    if (sec.altM && sec.tot > rem) { const a = sec.altM.find(x => x.tot <= rem) || (sec.splitAlt ? sec.altM[sec.altM.length - 1] : null); if (a) Object.assign(sec, a); }
     const n = sec.items.length;
     let i = 0;
     while (i < n) {

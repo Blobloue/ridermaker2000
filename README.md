@@ -52,6 +52,7 @@ Egyszer megnyitva a program **net nélkül is működik**, netre kapcsolva pedig
   - **Auto:** minden egy cellában a név után. Mikrofon: a konkrét típus (pl. SM58), ha nincs megadva, csak „mikrofon”. DI: „aktív DI” vagy „passzív DI”, ha nincs kiválasztva, csak „DI” (megadott típusnál zárójelben mellette). Utána az állvány (kis/nagy), az RF és a megjegyzés, ha ki van töltve.
   - Ha így nem fér el, az előnézet jelzi: kevesebb hasáb lesz, vagy ha egy hasábba sem fér ki egy sorban, kiírja, melyik sor(ok) miatt. Ezek a sorok a listán színes csíkot kapnak a szám előtt.
   - Az előnézet azt is jelzi, ha az input vagy az output lista a PDF-ben a következő oldalra kerül vagy átlóg (a PDF-ben a folytatás „Input lista (folytatás)” címet kap).
+  - **Hasábok a PDF-ben:** 1–10 sor egy hasáb, 11–20 kettő, 21–30 három hasáb (ha a szöveg nem fér el, kevesebb). Alap: 8 sor hasábonként. Ha egyenlően kijön, egyenlő hasábok (12 → 6/6, 21 → 7/7/7, 30 → 10/10/10). Kicsit kevesebbnél a bal hasábok teltek (8), a jobb szélső a maradék (22 → 8/8/6, 11 → 8/3). Többnél a többlet jobbról balra töltődik, hasábonként legfeljebb +2 sorral (25 → 8/8/9, 26 → 8/8/10, 28 → 8/10/10). Ennél hosszabb lista (vagy ha a szöveg miatt kevesebb hasáb van) 8 soros sávokban megy, a maradék alul kiegyenlítve (pl. 24 sor két hasábon: 8/8 + 4/4), ha elfér az oldalon, különben a következő oldalon folytatódik.
   - Új projekt alapból **Auto** módban indul. A meglévő projektek megtartják a saját beállításukat.
 
 ### Kérések
